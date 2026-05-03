@@ -1,521 +1,442 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M Tedarik - Dijital Ürünler</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --dark:  #050B18;
-    --dark2: #080F1F;
-    --dark3: #0D1526;
-    --dark4: #111D33;
-    --text:  #E8EDF8;
-    --muted: #6B7FA8;
-    --border:#1A2B4A;
-    --blue:  #3B82F6;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--dark);color:var(--text);font-family:'Outfit',sans-serif;min-height:100vh;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M Tedarik - Dijital Ürünler</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  /* HEADER */
-  header{
-    background:rgba(8,15,31,0.96);
-    backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--border);
-    padding:0 2.5rem;
-    position:sticky;top:0;z-index:100;
-    display:flex;align-items:center;justify-content:space-between;height:68px;
-  }
-  .logo-area{display:flex;align-items:center;gap:12px;}
-  .logo-mark{
-    width:40px;height:40px;
-    background:linear-gradient(135deg,#1D4ED8,#3B82F6);
-    border-radius:10px;display:flex;align-items:center;justify-content:center;
-    font-family:'Bebas Neue',cursive;font-size:22px;color:#fff;letter-spacing:1px;
-    box-shadow:0 0 20px rgba(59,130,246,0.3);
-  }
-  .logo-text{font-family:'Bebas Neue',cursive;font-size:24px;letter-spacing:3px;color:#fff;}
-  .logo-sub{font-size:9px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;margin-top:-3px;}
-  .header-right{display:flex;align-items:center;gap:12px;}
-  .header-tag{font-size:11px;color:#60A5FA;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);padding:5px 14px;border-radius:20px;letter-spacing:0.5px;}
-  @media(max-width:520px){.header-tag{display:none;}}
-  .header-contact a{
-    background:linear-gradient(135deg,#1D4ED8,#3B82F6);
-    color:#fff;font-weight:600;font-size:13px;padding:10px 22px;
-    border-radius:25px;text-decoration:none;
-    box-shadow:0 4px 16px rgba(37,99,235,0.35);transition:all 0.2s;
-  }
-  .header-contact a:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(37,99,235,0.5);}
+  <style>
+    :root{
+      --bg:#030712;
+      --panel:#07111f;
+      --panel2:#0b1628;
+      --card:#0d1b2f;
+      --line:#1e3a5f;
+      --text:#f8fbff;
+      --muted:#8ea3c4;
+      --blue:#12bff3;
+      --blue2:#0877b9;
+      --green:#22c55e;
+      --shadow:0 22px 70px rgba(0,0,0,.45);
+    }
 
-  /* HERO */
-  .hero{position:relative;text-align:center;padding:90px 2rem 70px;overflow:hidden;}
-  .hero-bg{
-    position:absolute;inset:0;
-    background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(37,99,235,0.18) 0%,transparent 70%),
-               radial-gradient(ellipse 40% 40% at 80% 80%,rgba(29,78,216,0.08) 0%,transparent 60%);
-    pointer-events:none;
-  }
-  .hero-grid{
-    position:absolute;inset:0;
-    background-image:linear-gradient(rgba(37,99,235,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.04) 1px,transparent 1px);
-    background-size:60px 60px;pointer-events:none;
-  }
-  .hero-content{position:relative;z-index:1;}
-  .hero-badge{
-    display:inline-flex;align-items:center;gap:8px;
-    background:rgba(37,99,235,0.12);border:1px solid rgba(59,130,246,0.25);
-    color:#60A5FA;font-size:11px;letter-spacing:3px;text-transform:uppercase;
-    padding:7px 20px;border-radius:20px;margin-bottom:28px;
-  }
-  .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:#3B82F6;animation:pulse 2s infinite;}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-  .hero h1{font-family:'Bebas Neue',cursive;font-size:clamp(52px,11vw,100px);letter-spacing:8px;line-height:1;color:#fff;margin-bottom:8px;}
-  .hero h1 span{color:#3B82F6;}
-  .hero-sub{font-family:'Bebas Neue',cursive;font-size:clamp(16px,4vw,26px);letter-spacing:6px;color:var(--muted);margin-bottom:20px;}
-  .hero p{color:var(--muted);font-size:15px;max-width:460px;margin:0 auto 36px;line-height:1.75;}
-  .hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-  .hero-cta{
-    display:inline-flex;align-items:center;gap:8px;
-    background:linear-gradient(135deg,#1D4ED8,#3B82F6);color:#fff;
-    font-weight:600;font-size:14px;padding:14px 32px;border-radius:30px;
-    text-decoration:none;transition:all 0.2s;box-shadow:0 6px 24px rgba(37,99,235,0.4);
-  }
-  .hero-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,99,235,0.55);}
-  .hero-cta2{
-    display:inline-flex;align-items:center;gap:8px;background:transparent;
-    color:#60A5FA;font-weight:500;font-size:14px;padding:14px 28px;border-radius:30px;
-    text-decoration:none;border:1px solid rgba(59,130,246,0.3);transition:all 0.2s;
-  }
-  .hero-cta2:hover{background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.5);}
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 20% 0%,rgba(18,191,243,.20),transparent 34%),
+        radial-gradient(circle at 80% 20%,rgba(37,99,235,.16),transparent 30%),
+        linear-gradient(180deg,#020617 0%,#06101f 52%,#020617 100%);
+      color:var(--text);
+      font-family:'Inter',Arial,sans-serif;
+    }
 
-  /* STATS */
-  .stats-bar{
-    display:flex;justify-content:center;
-    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-    background:var(--dark2);overflow-x:auto;scrollbar-width:none;
-  }
-  .stats-bar::-webkit-scrollbar{display:none;}
-  .stat-item{flex:1;min-width:110px;padding:18px 20px;text-align:center;border-right:1px solid var(--border);}
-  .stat-item:last-child{border-right:none;}
-  .stat-num{font-family:'Bebas Neue',cursive;font-size:26px;letter-spacing:2px;color:#60A5FA;}
-  .stat-label{font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:2px;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
 
-  /* CAT NAV */
-  .cat-nav{
-    display:flex;gap:8px;padding:18px 2rem;overflow-x:auto;
-    background:var(--dark2);border-bottom:1px solid var(--border);scrollbar-width:none;
-  }
-  .cat-nav::-webkit-scrollbar{display:none;}
-  .cat-btn{
-    flex-shrink:0;padding:7px 16px;border-radius:20px;
-    border:1px solid var(--border);background:transparent;
-    color:var(--muted);font-family:'Outfit',sans-serif;font-size:13px;
-    cursor:pointer;transition:all 0.2s;white-space:nowrap;
-  }
-  .cat-btn:hover,.cat-btn.active{border-color:var(--blue);color:#60A5FA;background:rgba(37,99,235,0.08);}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      height:78px;padding:0 5%;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      background:rgba(3,7,18,.78);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(18,191,243,.18);
+    }
 
-  /* MAIN */
-  main{max-width:1240px;margin:0 auto;padding:56px 2rem;}
-  .section{margin-bottom:72px;}
+    .brand{display:flex;align-items:center;gap:14px;min-width:max-content;}
+    .brand-logo{
+      width:58px;height:58px;border-radius:50%;object-fit:cover;
+      filter:drop-shadow(0 0 16px rgba(18,191,243,.45));
+      border:1px solid rgba(18,191,243,.4);
+      background:#fff;
+    }
+    .brand-name{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:3px;line-height:.9;}
+    .brand-name span{color:var(--blue);}
+    .brand-sub{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:5px;}
 
-  /* SECTION HEADER — per-brand accent via inline style */
-  .section-header{
-    display:flex;align-items:center;gap:14px;
-    margin-bottom:28px;padding-bottom:18px;
-    border-bottom:1px solid var(--border);
-  }
-  .section-icon{
-    width:46px;height:46px;border-radius:14px;
-    display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;
-  }
-  .section-title{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:2px;color:#fff;}
-  .section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
-  .section-count{font-size:11px;padding:4px 12px;border-radius:10px;letter-spacing:0.5px;white-space:nowrap;}
+    .nav{display:flex;align-items:center;gap:10px;}
+    .nav a{
+      padding:9px 14px;border-radius:999px;color:#c8d7ee;font-size:13px;font-weight:700;
+      border:1px solid transparent;transition:.25s;
+    }
+    .nav a:hover{color:#fff;border-color:rgba(18,191,243,.35);background:rgba(18,191,243,.08);}
+    .order-btn{
+      background:linear-gradient(135deg,var(--blue),#2563eb);
+      color:#00111c!important;box-shadow:0 12px 30px rgba(18,191,243,.26);
+      border:none!important;
+    }
 
-  /* PRODUCT GRID */
-  .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+    .hero{position:relative;overflow:hidden;padding:86px 5% 64px;}
+    .hero::before{
+      content:"";position:absolute;inset:0;opacity:.35;
+      background-image:linear-gradient(rgba(18,191,243,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(18,191,243,.08) 1px,transparent 1px);
+      background-size:70px 70px;mask-image:linear-gradient(to bottom,#000,transparent 80%);
+    }
+    .hero-wrap{position:relative;max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;}
+    .badge{
+      display:inline-flex;align-items:center;gap:9px;margin-bottom:24px;
+      padding:8px 16px;border-radius:999px;background:rgba(18,191,243,.10);
+      border:1px solid rgba(18,191,243,.25);color:#80eaff;font-size:12px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 18px var(--green);}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(58px,10vw,116px);letter-spacing:7px;line-height:.9;margin-bottom:18px;}
+    h1 span{color:var(--blue);text-shadow:0 0 38px rgba(18,191,243,.32);}
+    .hero p{max-width:570px;color:#b2c4df;font-size:17px;line-height:1.75;margin-bottom:30px;}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:13px;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:14px 22px;border-radius:16px;font-weight:800;font-size:14px;transition:.25s;
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--blue),#2563eb);color:#00111c;box-shadow:0 16px 38px rgba(18,191,243,.25);}
+    .btn-secondary{border:1px solid rgba(18,191,243,.30);color:#dff9ff;background:rgba(255,255,255,.03);}
+    .btn:hover{transform:translateY(-3px);}
 
-  /* BASE CARD */
-  .product-card{
-    background:var(--dark3);border:1px solid var(--border);border-radius:14px;
-    padding:20px;transition:all 0.25s;
-    display:flex;flex-direction:column;gap:12px;
-    position:relative;overflow:hidden;
-  }
-  .product-card::before{
-    content:'';position:absolute;top:0;left:0;right:0;height:2px;
-    opacity:0;transition:opacity 0.25s;
-  }
-  .product-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.5);}
-  .product-card:hover::before{opacity:1;}
+    .hero-card{
+      position:relative;min-height:420px;border-radius:34px;padding:28px;
+      background:linear-gradient(145deg,rgba(13,27,47,.90),rgba(7,17,31,.72));
+      border:1px solid rgba(18,191,243,.22);box-shadow:var(--shadow);overflow:hidden;
+    }
+    .hero-card::after{
+      content:"";position:absolute;inset:-30%;background:radial-gradient(circle,rgba(18,191,243,.18),transparent 42%);
+      animation:floatLight 6s ease-in-out infinite alternate;
+    }
+    @keyframes floatLight{from{transform:translate(-8%,-5%)}to{transform:translate(12%,8%)}}
+    .showcase{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .mini-product{
+      min-height:150px;border-radius:24px;padding:18px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05);
+      display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .mini-icon{font-size:44px;filter:drop-shadow(0 12px 20px rgba(0,0,0,.4));}
+    .mini-product b{font-size:15px;}
+    .mini-product small{color:var(--muted);margin-top:4px;display:block;}
 
-  .product-name{font-size:14px;font-weight:500;color:var(--text);line-height:1.45;flex:1;}
-  .product-badge{
-    display:inline-block;font-size:10px;font-weight:600;letter-spacing:0.3px;
-    padding:3px 10px;border-radius:6px;width:fit-content;
-  }
-  .product-footer{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
-  .product-price{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:1px;}
-  .buy-btn{
-    font-weight:600;font-size:12px;padding:8px 16px;
-    border-radius:20px;text-decoration:none;
-    border:1px solid transparent;transition:all 0.2s;white-space:nowrap;
-  }
+    .stats{border-top:1px solid rgba(18,191,243,.16);border-bottom:1px solid rgba(18,191,243,.16);background:rgba(7,17,31,.72);}
+    .stats-wrap{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+    .stat{padding:22px 18px;text-align:center;border-right:1px solid rgba(18,191,243,.13);}
+    .stat:last-child{border-right:none;}
+    .stat b{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:2px;color:#7ee8ff;display:block;}
+    .stat span{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:1px;}
 
-  /* ── BRAND THEMES ── */
+    .category-nav{position:sticky;top:78px;z-index:40;background:rgba(3,7,18,.84);backdrop-filter:blur(14px);border-bottom:1px solid rgba(18,191,243,.13);}
+    .category-scroll{max-width:1220px;margin:0 auto;padding:15px 5%;display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;}
+    .category-scroll::-webkit-scrollbar{display:none;}
+    .cat{
+      flex:0 0 auto;padding:10px 16px;border-radius:999px;border:1px solid rgba(142,163,196,.20);
+      background:rgba(255,255,255,.035);color:#cbd8ec;font-weight:800;font-size:13px;cursor:pointer;transition:.25s;
+    }
+    .cat.active,.cat:hover{border-color:rgba(18,191,243,.5);background:rgba(18,191,243,.12);color:#fff;}
 
-  /* ChatGPT — OpenAI Green */
-  .theme-chatgpt .section-icon{background:rgba(16,163,127,0.12);border:1px solid rgba(16,163,127,0.2);}
-  .theme-chatgpt .section-count{background:rgba(16,163,127,0.1);color:#34D399;border:1px solid rgba(16,163,127,0.2);}
-  .theme-chatgpt .section-header{border-color:rgba(16,163,127,0.15);}
-  .theme-chatgpt .product-card{border-color:rgba(16,163,127,0.1);background:linear-gradient(160deg,#0a1a16 0%,var(--dark3) 100%);}
-  .theme-chatgpt .product-card::before{background:linear-gradient(90deg,transparent,rgba(16,163,127,0.6),transparent);}
-  .theme-chatgpt .product-card:hover{border-color:rgba(16,163,127,0.35);box-shadow:0 8px 32px rgba(16,163,127,0.1);}
-  .theme-chatgpt .product-price{color:#34D399;}
-  .theme-chatgpt .buy-btn{background:rgba(16,163,127,0.12);color:#34D399;border-color:rgba(16,163,127,0.2);}
-  .theme-chatgpt .buy-btn:hover{background:linear-gradient(135deg,#0d7a5f,#10a37f);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(16,163,127,0.4);}
-  .theme-chatgpt .product-badge.badge-shared{background:rgba(16,163,127,0.12);color:#6EE7B7;border:1px solid rgba(16,163,127,0.2);}
-  .theme-chatgpt .product-badge.badge-personal{background:rgba(52,211,153,0.1);color:#A7F3D0;border:1px solid rgba(52,211,153,0.2);}
-  .theme-chatgpt .product-badge.badge-license{background:rgba(16,163,127,0.15);color:#34D399;border:1px solid rgba(16,163,127,0.25);}
-  .theme-chatgpt .product-badge.badge-unlimited{background:rgba(245,158,11,0.12);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);}
+    main{max-width:1220px;margin:0 auto;padding:62px 5%;}
+    .section{margin-bottom:68px;scroll-margin-top:150px;}
+    .section-head{display:flex;align-items:center;gap:15px;margin-bottom:24px;}
+    .section-icon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:30px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);}
+    .section-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;}
+    .section-desc{color:var(--muted);font-size:13px;margin-top:3px;}
+    .line{height:1px;flex:1;background:linear-gradient(90deg,rgba(18,191,243,.32),transparent);}
+    .count{font-size:12px;color:#9eefff;border:1px solid rgba(18,191,243,.24);background:rgba(18,191,243,.08);padding:7px 12px;border-radius:999px;font-weight:800;}
 
-  /* Exxen — Orange/Red */
-  .theme-exxen .section-icon{background:rgba(234,88,12,0.12);border:1px solid rgba(234,88,12,0.2);}
-  .theme-exxen .section-count{background:rgba(234,88,12,0.1);color:#FB923C;border:1px solid rgba(234,88,12,0.2);}
-  .theme-exxen .section-header{border-color:rgba(234,88,12,0.15);}
-  .theme-exxen .product-card{border-color:rgba(234,88,12,0.1);background:linear-gradient(160deg,#1a0d06 0%,var(--dark3) 100%);}
-  .theme-exxen .product-card::before{background:linear-gradient(90deg,transparent,rgba(234,88,12,0.6),transparent);}
-  .theme-exxen .product-card:hover{border-color:rgba(234,88,12,0.35);box-shadow:0 8px 32px rgba(234,88,12,0.1);}
-  .theme-exxen .product-price{color:#FB923C;}
-  .theme-exxen .buy-btn{background:rgba(234,88,12,0.12);color:#FB923C;border-color:rgba(234,88,12,0.2);}
-  .theme-exxen .buy-btn:hover{background:linear-gradient(135deg,#c2410c,#ea580c);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(234,88,12,0.4);}
-  .theme-exxen .product-badge{background:rgba(234,88,12,0.12);color:#FED7AA;border:1px solid rgba(234,88,12,0.2);}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:18px;}
+    .product{
+      border-radius:24px;overflow:hidden;background:linear-gradient(180deg,rgba(13,27,47,.92),rgba(7,17,31,.96));
+      border:1px solid rgba(142,163,196,.18);box-shadow:0 18px 50px rgba(0,0,0,.22);transition:.28s;position:relative;
+    }
+    .product:hover{transform:translateY(-7px);border-color:rgba(18,191,243,.42);box-shadow:0 24px 70px rgba(18,191,243,.10);}
+    .photo{
+      height:156px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--c1),var(--c2));
+    }
+    .photo::before{
+      content:"";position:absolute;inset:0;opacity:.24;
+      background-image:radial-gradient(circle at 20% 20%,#fff 0 2px,transparent 2px),linear-gradient(45deg,rgba(255,255,255,.24),transparent 55%);
+      background-size:28px 28px,100% 100%;
+    }
+    .photo::after{
+      content:"";position:absolute;width:180px;height:180px;border:2px solid rgba(255,255,255,.22);border-radius:50%;right:-48px;bottom:-70px;
+    }
+    .photo .emoji{font-size:56px;z-index:2;filter:drop-shadow(0 14px 22px rgba(0,0,0,.45));}
+    .photo .brand-word{position:absolute;left:18px;bottom:14px;font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;z-index:2;text-shadow:0 8px 22px rgba(0,0,0,.45);}
+    .body{padding:18px;}
+    .tag{display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:900;color:#dff9ff;background:rgba(18,191,243,.10);border:1px solid rgba(18,191,243,.20);}
+    .name{min-height:48px;font-size:15px;line-height:1.45;font-weight:800;color:#f7fbff;}
+    .detail{margin-top:6px;min-height:18px;color:var(--muted);font-size:12px;line-height:1.45;}
+    .bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(142,163,196,.14);}
+    .price{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:1px;color:#7ee8ff;line-height:1;}
+    .buy{padding:10px 14px;border-radius:13px;background:rgba(18,191,243,.12);border:1px solid rgba(18,191,243,.28);color:#dff9ff;font-weight:900;font-size:12px;white-space:nowrap;transition:.25s;}
+    .buy:hover{background:linear-gradient(135deg,var(--blue),#2563eb);color:#00111c;}
 
-  /* BluTV / HBO — Deep Purple */
-  .theme-blutv .section-icon{background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.2);}
-  .theme-blutv .section-count{background:rgba(124,58,237,0.1);color:#C4B5FD;border:1px solid rgba(124,58,237,0.2);}
-  .theme-blutv .section-header{border-color:rgba(124,58,237,0.15);}
-  .theme-blutv .product-card{border-color:rgba(124,58,237,0.1);background:linear-gradient(160deg,#120a1e 0%,var(--dark3) 100%);}
-  .theme-blutv .product-card::before{background:linear-gradient(90deg,transparent,rgba(124,58,237,0.6),transparent);}
-  .theme-blutv .product-card:hover{border-color:rgba(124,58,237,0.35);box-shadow:0 8px 32px rgba(124,58,237,0.12);}
-  .theme-blutv .product-price{color:#C4B5FD;}
-  .theme-blutv .buy-btn{background:rgba(124,58,237,0.12);color:#C4B5FD;border-color:rgba(124,58,237,0.2);}
-  .theme-blutv .buy-btn:hover{background:linear-gradient(135deg,#6d28d9,#7c3aed);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(124,58,237,0.4);}
-  .theme-blutv .product-badge{background:rgba(124,58,237,0.12);color:#DDD6FE;border:1px solid rgba(124,58,237,0.2);}
+    .notice{margin-top:18px;padding:16px 18px;border-radius:18px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.18);color:#facc15;font-size:13px;line-height:1.7;}
 
-  /* Netflix — Red */
-  .theme-netflix .section-icon{background:rgba(229,9,20,0.12);border:1px solid rgba(229,9,20,0.2);}
-  .theme-netflix .section-count{background:rgba(229,9,20,0.1);color:#FCA5A5;border:1px solid rgba(229,9,20,0.2);}
-  .theme-netflix .section-header{border-color:rgba(229,9,20,0.15);}
-  .theme-netflix .product-card{border-color:rgba(229,9,20,0.1);background:linear-gradient(160deg,#1a0606 0%,var(--dark3) 100%);}
-  .theme-netflix .product-card::before{background:linear-gradient(90deg,transparent,rgba(229,9,20,0.6),transparent);}
-  .theme-netflix .product-card:hover{border-color:rgba(229,9,20,0.35);box-shadow:0 8px 32px rgba(229,9,20,0.12);}
-  .theme-netflix .product-price{color:#FCA5A5;}
-  .theme-netflix .buy-btn{background:rgba(229,9,20,0.12);color:#FCA5A5;border-color:rgba(229,9,20,0.2);}
-  .theme-netflix .buy-btn:hover{background:linear-gradient(135deg,#b91c1c,#e50914);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(229,9,20,0.4);}
-  .theme-netflix .product-badge.badge-shared{background:rgba(229,9,20,0.12);color:#FECACA;border:1px solid rgba(229,9,20,0.2);}
-  .theme-netflix .product-badge.badge-personal{background:rgba(185,28,28,0.15);color:#FCA5A5;border:1px solid rgba(185,28,28,0.25);}
+    .contact{margin-top:76px;border-radius:32px;padding:32px;background:linear-gradient(145deg,rgba(13,27,47,.96),rgba(7,17,31,.85));border:1px solid rgba(18,191,243,.20);box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;}
+    .contact h2{font-family:'Bebas Neue',sans-serif;font-size:46px;letter-spacing:3px;margin-bottom:10px;}
+    .contact p{color:var(--muted);line-height:1.7;margin-bottom:20px;}
+    .contact-list{display:grid;gap:10px;}
+    .contact-item{padding:14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#dbeafe;font-size:14px;}
+    .big-logo{width:260px;max-width:80%;margin:0 auto;filter:drop-shadow(0 0 34px rgba(18,191,243,.38));}
 
-  /* Spotify — Green */
-  .theme-spotify .section-icon{background:rgba(29,185,84,0.12);border:1px solid rgba(29,185,84,0.2);}
-  .theme-spotify .section-count{background:rgba(29,185,84,0.1);color:#4ADE80;border:1px solid rgba(29,185,84,0.2);}
-  .theme-spotify .section-header{border-color:rgba(29,185,84,0.15);}
-  .theme-spotify .product-card{border-color:rgba(29,185,84,0.1);background:linear-gradient(160deg,#081a0e 0%,var(--dark3) 100%);}
-  .theme-spotify .product-card::before{background:linear-gradient(90deg,transparent,rgba(29,185,84,0.6),transparent);}
-  .theme-spotify .product-card:hover{border-color:rgba(29,185,84,0.35);box-shadow:0 8px 32px rgba(29,185,84,0.1);}
-  .theme-spotify .product-price{color:#4ADE80;}
-  .theme-spotify .buy-btn{background:rgba(29,185,84,0.12);color:#4ADE80;border-color:rgba(29,185,84,0.2);}
-  .theme-spotify .buy-btn:hover{background:linear-gradient(135deg,#15803d,#1db954);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(29,185,84,0.4);}
-  .theme-spotify .product-badge.badge-license{background:rgba(29,185,84,0.12);color:#86EFAC;border:1px solid rgba(29,185,84,0.2);}
-  .theme-spotify .product-badge.badge-personal{background:rgba(52,211,153,0.1);color:#A7F3D0;border:1px solid rgba(52,211,153,0.2);}
-  .theme-spotify .product-badge.badge-unlimited{background:rgba(245,158,11,0.12);color:#FCD34D;border:1px solid rgba(245,158,11,0.2);}
+    footer{padding:44px 5%;text-align:center;border-top:1px solid rgba(18,191,243,.16);background:#020617;color:var(--muted);}
+    .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:5px;color:#fff;margin-bottom:8px;}
+    .footer-brand span{color:var(--blue);}
 
-  /* CapCut — Violet/Pink */
-  .theme-capcut .section-icon{background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.2);}
-  .theme-capcut .section-count{background:rgba(168,85,247,0.1);color:#E879F9;border:1px solid rgba(168,85,247,0.2);}
-  .theme-capcut .section-header{border-color:rgba(168,85,247,0.15);}
-  .theme-capcut .product-card{border-color:rgba(168,85,247,0.1);background:linear-gradient(160deg,#16091e 0%,var(--dark3) 100%);}
-  .theme-capcut .product-card::before{background:linear-gradient(90deg,transparent,rgba(168,85,247,0.6),transparent);}
-  .theme-capcut .product-card:hover{border-color:rgba(168,85,247,0.35);box-shadow:0 8px 32px rgba(168,85,247,0.12);}
-  .theme-capcut .product-price{color:#E879F9;}
-  .theme-capcut .buy-btn{background:rgba(168,85,247,0.12);color:#E879F9;border-color:rgba(168,85,247,0.2);}
-  .theme-capcut .buy-btn:hover{background:linear-gradient(135deg,#9333ea,#a855f7);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(168,85,247,0.4);}
-  .theme-capcut .product-badge{background:rgba(168,85,247,0.12);color:#F0ABFC;border:1px solid rgba(168,85,247,0.2);}
-
-  /* TikTok — Cyan + Pink */
-  .theme-tiktok .section-icon{background:rgba(0,242,234,0.08);border:1px solid rgba(0,242,234,0.15);}
-  .theme-tiktok .section-count{background:rgba(255,0,80,0.1);color:#FF6B9D;border:1px solid rgba(255,0,80,0.2);}
-  .theme-tiktok .section-header{border-color:rgba(0,242,234,0.12);}
-  .theme-tiktok .product-card{border-color:rgba(0,242,234,0.08);background:linear-gradient(160deg,#001a1a 0%,var(--dark3) 100%);}
-  .theme-tiktok .product-card::before{background:linear-gradient(90deg,transparent,rgba(0,242,234,0.5),rgba(255,0,80,0.4),transparent);}
-  .theme-tiktok .product-card:hover{border-color:rgba(0,242,234,0.3);box-shadow:0 8px 32px rgba(0,242,234,0.08);}
-  .theme-tiktok .product-price{color:#00F2EA;}
-  .theme-tiktok .buy-btn{background:rgba(0,242,234,0.08);color:#00F2EA;border-color:rgba(0,242,234,0.2);}
-  .theme-tiktok .buy-btn:hover{background:linear-gradient(135deg,#FF0050,#00F2EA);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(0,242,234,0.3);}
-  .theme-tiktok .product-badge{background:rgba(255,0,80,0.1);color:#FF9EBB;border:1px solid rgba(255,0,80,0.2);}
-
-  /* Instagram — Pink/Purple gradient */
-  .theme-instagram .section-icon{background:rgba(225,48,108,0.12);border:1px solid rgba(225,48,108,0.2);}
-  .theme-instagram .section-count{background:rgba(225,48,108,0.1);color:#F472B6;border:1px solid rgba(225,48,108,0.2);}
-  .theme-instagram .section-header{border-color:rgba(225,48,108,0.15);}
-  .theme-instagram .product-card{border-color:rgba(225,48,108,0.1);background:linear-gradient(160deg,#1a0814 0%,var(--dark3) 100%);}
-  .theme-instagram .product-card::before{background:linear-gradient(90deg,transparent,rgba(225,48,108,0.5),rgba(249,168,37,0.3),transparent);}
-  .theme-instagram .product-card:hover{border-color:rgba(225,48,108,0.35);box-shadow:0 8px 32px rgba(225,48,108,0.1);}
-  .theme-instagram .product-price{color:#F472B6;}
-  .theme-instagram .buy-btn{background:rgba(225,48,108,0.12);color:#F472B6;border-color:rgba(225,48,108,0.2);}
-  .theme-instagram .buy-btn:hover{background:linear-gradient(135deg,#be185d,#e1306c,#fd1d1d);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(225,48,108,0.4);}
-  .theme-instagram .product-badge{background:rgba(225,48,108,0.1);color:#FBCFE8;border:1px solid rgba(225,48,108,0.2);}
-
-  /* NOTE BOX */
-  .note-box{
-    background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);
-    border-left:3px solid rgba(251,191,36,0.5);
-    border-radius:10px;padding:14px 18px;margin-top:18px;
-    font-size:12.5px;color:#FCD34D;line-height:1.65;
-  }
-
-  /* FOOTER */
-  footer{
-    text-align:center;padding:56px 2rem;
-    border-top:1px solid var(--border);background:var(--dark2);
-    position:relative;overflow:hidden;
-  }
-  footer::before{
-    content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-    width:600px;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(59,130,246,0.5),transparent);
-  }
-  .footer-logo{font-family:'Bebas Neue',cursive;font-size:36px;letter-spacing:6px;color:#fff;margin-bottom:8px;}
-  .footer-logo span{color:#3B82F6;}
-  footer p{color:var(--muted);font-size:13px;line-height:2;}
-  footer a{color:#60A5FA;text-decoration:none;font-weight:500;}
-  footer a:hover{color:#fff;}
-  .footer-divider{width:40px;height:2px;background:#2563EB;border-radius:2px;margin:20px auto;}
-  .footer-copy{font-size:11px;color:#1e2d4a;margin-top:24px;letter-spacing:1px;}
-
-  @media(max-width:600px){
-    .hero{padding:60px 1.5rem 48px;}
-    .product-grid{grid-template-columns:1fr 1fr;gap:10px;}
-    .product-card{padding:14px;}
-    header{padding:0 1.2rem;}
-    main{padding:36px 1.2rem;}
-  }
-  @media(max-width:380px){.product-grid{grid-template-columns:1fr;}}
-</style>
+    @media(max-width:920px){
+      .hero-wrap,.contact{grid-template-columns:1fr;}
+      .nav{display:none;}
+      .stats-wrap{grid-template-columns:repeat(2,1fr);}
+      .hero-card{min-height:auto;}
+    }
+    @media(max-width:560px){
+      .topbar{height:72px;padding:0 4%;}
+      .brand-logo{width:48px;height:48px;}
+      .brand-name{font-size:27px;}
+      .hero{padding:56px 4% 44px;}
+      .showcase{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr;}
+      .section-head{align-items:flex-start;}
+      .line,.count{display:none;}
+      .category-nav{top:72px;}
+      main{padding:44px 4%;}
+    }
+  </style>
 </head>
 <body>
+  <header class="topbar">
+    <a href="#" class="brand">
+      <!-- Logo dosyanı HTML ile aynı klasöre koy: m tedarik logo.png -->
+      <img src="m tedarik logo.png" alt="M Tedarik Logo" class="brand-logo" />
+      <div>
+        <div class="brand-name">M <span>TEDARİK</span></div>
+        <div class="brand-sub">Dijital Ürünler</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="#products">Ürünler</a>
+      <a href="#contact">İletişim</a>
+      <a class="order-btn" href="https://www.instagram.com/mahmut_x_21_" target="_blank">Sipariş Ver</a>
+    </nav>
+  </header>
 
-<header>
-  <div class="logo-area">
-    <div class="logo-mark">M</div>
+  <section class="hero">
+    <div class="hero-wrap">
+      <div>
+        <div class="badge"><span class="dot"></span> 7/24 Güvenilir Dijital Tedarik</div>
+        <h1>M <span>TEDARİK</span></h1>
+        <p>Premium dijital ürünler, abonelikler ve sosyal medya hizmetleri için modern, hızlı ve profesyonel satış paneli. Ürünleri incele, Instagram üzerinden sipariş oluştur.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://www.instagram.com/mahmut_x_21_" target="_blank">Hemen Sipariş Ver →</a>
+          <a class="btn btn-secondary" href="#products">Ürünleri İncele</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="showcase">
+          <div class="mini-product" style="background:linear-gradient(135deg,#10a37f,#063b31)"><div class="mini-icon">🤖</div><div><b>ChatGPT</b><small>Premium hesaplar</small></div></div>
+          <div class="mini-product" style="background:linear-gradient(135deg,#e50914,#3a0608)"><div class="mini-icon">🎥</div><div><b>Netflix</b><small>Dijital abonelik</small></div></div>
+          <div class="mini-product" style="background:linear-gradient(135deg,#1db954,#062513)"><div class="mini-icon">🎵</div><div><b>Spotify</b><small>Premium müzik</small></div></div>
+          <div class="mini-product" style="background:linear-gradient(135deg,#e1306c,#411069)"><div class="mini-icon">📸</div><div><b>Sosyal Medya</b><small>Hizmet paketleri</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stats-wrap">
+      <div class="stat"><b>50+</b><span>Ürün Paketi</span></div>
+      <div class="stat"><b>7/24</b><span>Destek</span></div>
+      <div class="stat"><b>8</b><span>Platform</span></div>
+      <div class="stat"><b>%100</b><span>Hızlı Teslim</span></div>
+    </div>
+  </section>
+
+  <div class="category-nav">
+    <div class="category-scroll">
+      <button class="cat active" data-filter="all">Tümü</button>
+      <button class="cat" data-filter="chatgpt">🤖 ChatGPT</button>
+      <button class="cat" data-filter="exxen">📺 Exxen</button>
+      <button class="cat" data-filter="blutv">🎬 BluTV / HBO</button>
+      <button class="cat" data-filter="netflix">🎥 Netflix</button>
+      <button class="cat" data-filter="spotify">🎵 Spotify</button>
+      <button class="cat" data-filter="capcut">🎞️ CapCut</button>
+      <button class="cat" data-filter="tiktok">🎶 TikTok</button>
+      <button class="cat" data-filter="instagram">📸 Instagram</button>
+    </div>
+  </div>
+
+  <main id="products"></main>
+
+  <section id="contact" class="contact" style="max-width:1100px;margin-left:auto;margin-right:auto;">
     <div>
-      <div class="logo-text">M TEDARİK</div>
-      <div class="logo-sub">Dijital Ürünler</div>
+      <h2>Sipariş ve İletişim</h2>
+      <p>Ürün satın almak için Instagram üzerinden iletişime geçebilirsin. Sipariş butonları doğrudan Instagram hesabına yönlendirir.</p>
+      <div class="contact-list">
+        <div class="contact-item">📲 Instagram: <b>@mahmut_x_21_</b></div>
+        <div class="contact-item">⚡ Teslimat: <b>Hızlı / Anlık</b></div>
+        <div class="contact-item">🛡️ Destek: <b>7/24</b></div>
+      </div>
+      <br>
+      <a class="btn btn-primary" href="https://www.instagram.com/mahmut_x_21_" target="_blank">Instagram'a Git →</a>
     </div>
-  </div>
-  <div class="header-right">
-    <div class="header-tag">⚡ 7/24 Destek</div>
-    <div class="header-contact">
-      <a href="https://www.instagram.com/mahmut_x_21_" target="_blank">Sipariş Ver</a>
-    </div>
-  </div>
-</header>
+    <div><img src="m tedarik logo.png" alt="M Tedarik Logo" class="big-logo" /></div>
+  </section>
 
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><div class="hero-badge-dot"></div>Güvenilir Dijital Tedarik</div>
-    <h1>M <span>TEDARİK</span></h1>
-    <div class="hero-sub">Dijital Ürünler Mağazası</div>
-    <p>Premium dijital abonelikler ve sosyal medya hizmetleri. Anında teslim, güvenli alışveriş.</p>
-    <div class="hero-buttons">
-      <a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="hero-cta">Hemen Sipariş Ver →</a>
-      <a href="#products" class="hero-cta2">Ürünleri İncele</a>
-    </div>
-  </div>
-</section>
+  <footer>
+    <div class="footer-brand">M <span>TEDARİK</span></div>
+    <p>© 2026 M Tedarik — Tüm hakları saklıdır.</p>
+  </footer>
 
-<div class="stats-bar">
-  <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Ürün Çeşidi</div></div>
-  <div class="stat-item"><div class="stat-num">7/24</div><div class="stat-label">Canlı Destek</div></div>
-  <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">Platform</div></div>
-  <div class="stat-item"><div class="stat-num">%100</div><div class="stat-label">Güvenli</div></div>
-</div>
+  <script>
+    const orderLink = "https://www.instagram.com/mahmut_x_21_";
 
-<div class="cat-nav">
-  <button class="cat-btn active">Tümü</button>
-  <button class="cat-btn">🤖 ChatGPT</button>
-  <button class="cat-btn">📺 Exxen</button>
-  <button class="cat-btn">🎬 BluTV / HBO</button>
-  <button class="cat-btn">🎥 Netflix</button>
-  <button class="cat-btn">🎵 Spotify</button>
-  <button class="cat-btn">🎞️ CapCut</button>
-  <button class="cat-btn">🎶 TikTok</button>
-  <button class="cat-btn">📸 Instagram</button>
-</div>
+    const sections = [
+      {
+        id:"chatgpt", title:"ChatGPT", icon:"🤖", desc:"Premium ve özel hesap seçenekleri", c1:"#10a37f", c2:"#063b31",
+        notice:"⚡ Not: Sipariş öncesi ürün detayını ve teslimat şeklini Instagram üzerinden teyit ediniz.",
+        products:[
+          ["ChatGPT Plus 4.0","Ortak Hesap","100₺","Premium erişim"],
+          ["ChatGPT Plus 4.0","Kişisel Hesap","140₺","Kişiye özel kullanım"],
+          ["ChatGPT Plus 5.2","Ortak Hesap","120₺","Avantajlı paket"],
+          ["ChatGPT Plus 5.2","Kişisel Hesap","150₺","Kişisel kullanım"],
+          ["ChatGPT Business","Kendi Hesabınıza","100₺","Business seçenek"],
+          ["ChatGPT Business Kişisel","Kişisel Hesap","150₺","Özel teslim"],
+          ["Otomatik Kod Sistemi","1 Aylık · Lisanslı","200₺","Gmail'e otomatik teslim"],
+          ["Otomatik Kod Sistemi","Sınırsız · Lisanssız","600₺","7/24 otomatik teslim"]
+        ]
+      },
+      {
+        id:"exxen", title:"Exxen", icon:"📺", desc:"Exxen hesap ve kod ürünleri", c1:"#f97316", c2:"#3b1305",
+        products:[
+          ["Exxen Hesap","1 Aylık","70₺","Dijital teslim"],
+          ["Exxen Hesap","3 Aylık","120₺","Avantajlı paket"],
+          ["Exxen Kod","3 Aylık Kod","50₺","Kod teslim"]
+        ]
+      },
+      {
+        id:"blutv", title:"BluTV / HBO Max", icon:"🎬", desc:"Film ve dizi abonelikleri", c1:"#7c3aed", c2:"#1d0b3b",
+        products:[
+          ["BluTV Üyelik","Üyelik","60₺","Dijital hesap"],
+          ["BluTV Üyelik","Toplu Alım","50₺","Toplu fiyat"]
+        ]
+      },
+      {
+        id:"netflix", title:"Netflix", icon:"🎥", desc:"Netflix profil ve hesap seçenekleri", c1:"#e50914", c2:"#350607",
+        products:[
+          ["Netflix 1 Aylık","Kişiye Özel Profil","150₺","Profil teslim"],
+          ["Netflix 1 Aylık","Kişisel Hesap","300₺","Kişisel kullanım"]
+        ]
+      },
+      {
+        id:"spotify", title:"Spotify", icon:"🎵", desc:"Spotify Premium paketleri", c1:"#1db954", c2:"#062513",
+        products:[
+          ["Spotify Premium","3 Ay Garantili","80₺","3. ay için 99₺ ücret alır"],
+          ["Spotify Premium 1 Aylık","Kendi Hesabınıza","50₺","Gmail'e davet gönderilir"],
+          ["Spotify Premium","4 Ay Garantili","100₺","99₺ ücret istemez"]
+        ]
+      },
+      {
+        id:"capcut", title:"CapCut", icon:"🎞️", desc:"Video düzenleme premium paketleri", c1:"#a855f7", c2:"#2e0b48",
+        products:[
+          ["CapCut Premium 1 Aylık","Ortak","100₺","Ortak kullanım"],
+          ["CapCut Premium 1 Aylık","Kişiye Özel","150₺","Özel kullanım"]
+        ]
+      },
+      {
+        id:"tiktok", title:"TikTok", icon:"🎶", desc:"TikTok sosyal medya hizmetleri", c1:"#00f2ea", c2:"#ff0050",
+        notice:"⚠️ Önemli: İşlem öncesi hesap herkese açık olmalıdır. Gizli hesaplarda işlem sağlıklı ilerlemeyebilir.",
+        products:[
+          ["1.000 Takipçi","Telafisiz","120₺","Hızlı işlem"],
+          ["1.000 Takipçi","7G ♻️","130₺","7 gün telafi"],
+          ["1.000 Takipçi","30G ♻️","150₺","30 gün telafi"],
+          ["1.000 Takipçi","365G ♻️","190₺","365 gün telafi"],
+          ["1.000 Beğeni","30G ♻️","50₺","Video beğeni"],
+          ["1.000 Beğeni","365G ♻️","50₺","Uzun telafi"],
+          ["1.000 İzlenme","30G ♻️","50₺","Video izlenme"],
+          ["1.000 İzlenme","365G ♻️","50₺","Uzun telafi"],
+          ["1.000 Rastgele Yorum","Telafisiz","180₺","Yorum paketi"],
+          ["1.000 Yorum Beğenisi","30G ♻️","70₺","Yorum etkileşimi"],
+          ["1.000 Kaydetme","365G ♻️","50₺","Kaydetme paketi"],
+          ["1.000 Paylaşım","365G ♻️","150₺","Paylaşım paketi"],
+          ["1.000 Repost","30G ♻️","150₺","Repost paketi"],
+          ["1.000 Video İndirme","30G ♻️","100₺","İndirme paketi"],
+          ["1.000 Hikaye Beğeni","Telafisiz","80₺","Hikaye etkileşimi"]
+        ]
+      },
+      {
+        id:"instagram", title:"Instagram", icon:"📸", desc:"Instagram sosyal medya hizmetleri", c1:"#e1306c", c2:"#5b21b6",
+        notice:"⚠️ Önemli: İşlem öncesi hesap herkese açık olmalıdır. Gizli hesaplarda işlem sağlıklı ilerlemeyebilir.",
+        products:[
+          ["1.000 Yabancı Takipçi","Telafisiz","120₺","Takipçi paketi"],
+          ["1.000 Yabancı Takipçi","365G ♻️","150₺","Uzun telafi"],
+          ["1.000 Türk Takipçi","30G ♻️","400₺","Türk takipçi"],
+          ["1.000 Yabancı Beğeni","365G ♻️","60₺","Beğeni paketi"],
+          ["1.000 Türk Beğeni","30G ♻️","120₺","Türk beğeni"],
+          ["1.000 İzlenme","Telafisiz","50₺","Reels/video"],
+          ["1.000 Fotoğraf Görüntülenmesi","Telafisiz","50₺","Görüntülenme"],
+          ["1.000 Rastgele Yabancı Yorum","Telafisiz","120₺","Yorum paketi"],
+          ["1.000 Yorum Beğenisi","365G ♻️","200₺","Yorum etkileşimi"],
+          ["1.000 Kaydetme","Telafisiz","60₺","Kaydetme paketi"],
+          ["1.000 Paylaşım","365G ♻️","50₺","Paylaşım paketi"],
+          ["1.000 Repost","Telafisiz","100₺","Repost paketi"],
+          ["1.000 Türk Kanal Üyesi","90G ♻️","120₺","Kanal üyesi"],
+          ["1.000 Canlı Yayın Beğeni","Telafisiz","120₺","Canlı yayın"]
+        ]
+      }
+    ];
 
-<main id="products">
+    const main = document.querySelector('main');
 
-  <!-- ══ ChatGPT ══ -->
-  <div class="section theme-chatgpt">
-    <div class="section-header">
-      <div class="section-icon">🤖</div>
-      <div class="section-title">ChatGPT</div>
-      <div class="section-line"></div>
-      <div class="section-count">8 Ürün</div>
-    </div>
-    <div class="product-grid">
-      <div class="product-card"><span class="product-badge badge-shared">Ortak Hesap</span><div class="product-name">ChatGPT Plus 4.0</div><div class="product-footer"><div class="product-price">100₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-personal">Kişisel Hesap</span><div class="product-name">ChatGPT Plus 4.0</div><div class="product-footer"><div class="product-price">140₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-shared">Ortak Hesap</span><div class="product-name">ChatGPT Plus 5.2</div><div class="product-footer"><div class="product-price">120₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-personal">Kişisel Hesap</span><div class="product-name">ChatGPT Plus 5.2</div><div class="product-footer"><div class="product-price">150₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-personal">Kendi Hesabınıza</span><div class="product-name">ChatGPT Business</div><div class="product-footer"><div class="product-price">100₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-personal">Kişisel Hesap</span><div class="product-name">ChatGPT Business (Kişisel)</div><div class="product-footer"><div class="product-price">150₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-license">1 Aylık · Lisanslı</span><div class="product-name">Otomatik Kod Sistemi<br><small style="color:var(--muted);font-size:11px;font-weight:400;">Gmail'inize 7/24 otomatik teslim</small></div><div class="product-footer"><div class="product-price">200₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-unlimited">Sınırsız · Lisanssız</span><div class="product-name">Otomatik Kod Sistemi<br><small style="color:var(--muted);font-size:11px;font-weight:400;">Gmail'inize 7/24 otomatik teslim</small></div><div class="product-footer"><div class="product-price">600₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-    </div>
-    <div class="note-box">⚡ <strong>Not:</strong> Lisanslı sistem Gmail'inize otomatik kod gönderir. Kendi yazılımımız tarafından geliştirilmiş olup satın aldığınızda 7/24 teslim gerçekleştirebilirsiniz.</div>
-  </div>
+    function productCard(section, product){
+      const [name, tag, price, detail] = product;
+      return `
+        <article class="product" data-cat="${section.id}" style="--c1:${section.c1};--c2:${section.c2}">
+          <div class="photo">
+            <div class="emoji">${section.icon}</div>
+            <div class="brand-word">${section.title}</div>
+          </div>
+          <div class="body">
+            <div class="tag">${tag}</div>
+            <div class="name">${name}</div>
+            <div class="detail">${detail}</div>
+            <div class="bottom">
+              <div class="price">${price}</div>
+              <a class="buy" href="${orderLink}" target="_blank">Satın Al</a>
+            </div>
+          </div>
+        </article>`;
+    }
 
-  <!-- ══ Exxen ══ -->
-  <div class="section theme-exxen">
-    <div class="section-header">
-      <div class="section-icon">📺</div>
-      <div class="section-title">Exxen</div>
-      <div class="section-line"></div>
-      <div class="section-count">3 Ürün</div>
-    </div>
-    <div class="product-grid">
-      <div class="product-card"><span class="product-badge">1 Aylık</span><div class="product-name">Exxen Hesap</div><div class="product-footer"><div class="product-price">70₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">3 Aylık</span><div class="product-name">Exxen Hesap</div><div class="product-footer"><div class="product-price">120₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">3 Aylık Kod</span><div class="product-name">Exxen Kod</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-    </div>
-  </div>
+    function sectionBlock(section){
+      return `
+        <section class="section" id="${section.id}" data-section="${section.id}">
+          <div class="section-head">
+            <div class="section-icon">${section.icon}</div>
+            <div>
+              <div class="section-title">${section.title}</div>
+              <div class="section-desc">${section.desc}</div>
+            </div>
+            <div class="line"></div>
+            <div class="count">${section.products.length} Ürün</div>
+          </div>
+          <div class="grid">
+            ${section.products.map(p => productCard(section,p)).join('')}
+          </div>
+          ${section.notice ? `<div class="notice">${section.notice}</div>` : ''}
+        </section>`;
+    }
 
-  <!-- ══ BluTV / HBO ══ -->
-  <div class="section theme-blutv">
-    <div class="section-header">
-      <div class="section-icon">🎬</div>
-      <div class="section-title">BluTV / HBO Max</div>
-      <div class="section-line"></div>
-      <div class="section-count">2 Ürün</div>
-    </div>
-    <div class="product-grid">
-      <div class="product-card"><span class="product-badge">Üyelik</span><div class="product-name">BluTV Üyelik</div><div class="product-footer"><div class="product-price">60₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Toplu Alım</span><div class="product-name">BluTV Üyelik</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-    </div>
-  </div>
+    main.innerHTML = sections.map(sectionBlock).join('');
 
-  <!-- ══ Netflix ══ -->
-  <div class="section theme-netflix">
-    <div class="section-header">
-      <div class="section-icon">🎥</div>
-      <div class="section-title">Netflix</div>
-      <div class="section-line"></div>
-      <div class="section-count">2 Ürün</div>
-    </div>
-    <div class="product-grid">
-      <div class="product-card"><span class="product-badge badge-shared">Kişiye Özel Profil</span><div class="product-name">Netflix 1 Aylık</div><div class="product-footer"><div class="product-price">150₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-personal">Kişisel Hesap</span><div class="product-name">Netflix 1 Aylık</div><div class="product-footer"><div class="product-price">300₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-    </div>
-  </div>
-
-  <!-- ══ Spotify ══ -->
-  <div class="section theme-spotify">
-    <div class="section-header">
-      <div class="section-icon">🎵</div>
-      <div class="section-title">Spotify</div>
-      <div class="section-line"></div>
-      <div class="section-count">3 Ürün</div>
-    </div>
-    <div class="product-grid">
-      <div class="product-card"><span class="product-badge badge-license">3 Ay Garantili</span><div class="product-name">Spotify Premium<br><small style="color:var(--muted);font-size:11px;font-weight:400;">3. ay için 99₺ ücret alır</small></div><div class="product-footer"><div class="product-price">80₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-personal">Kendi Hesabınıza</span><div class="product-name">Spotify Premium 1 Aylık<br><small style="color:var(--muted);font-size:11px;font-weight:400;">Gmail'inize davet gönderilir</small></div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge badge-unlimited">4 Ay Garantili</span><div class="product-name">Spotify Premium<br><small style="color:var(--muted);font-size:11px;font-weight:400;">99₺ ücret istemez</small></div><div class="product-footer"><div class="product-price">100₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-    </div>
-  </div>
-
-  <!-- ══ CapCut ══ -->
-  <div class="section theme-capcut">
-    <div class="section-header">
-      <div class="section-icon">🎞️</div>
-      <div class="section-title">CapCut</div>
-      <div class="section-line"></div>
-      <div class="section-count">2 Ürün</div>
-    </div>
-    <div class="product-grid">
-      <div class="product-card"><span class="product-badge">Ortak</span><div class="product-name">CapCut Premium 1 Aylık</div><div class="product-footer"><div class="product-price">100₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Kişiye Özel</span><div class="product-name">CapCut Premium 1 Aylık</div><div class="product-footer"><div class="product-price">150₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-    </div>
-  </div>
-
-  <!-- ══ TikTok ══ -->
-  <div class="section theme-tiktok">
-    <div class="section-header">
-      <div class="section-icon">🎶</div>
-      <div class="section-title">TikTok</div>
-      <div class="section-line"></div>
-      <div class="section-count">15 Ürün</div>
-    </div>
-    <div class="product-grid">
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 Takipçi</div><div class="product-footer"><div class="product-price">120₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">7G ♻️</span><div class="product-name">1.000 Takipçi</div><div class="product-footer"><div class="product-price">130₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">30G ♻️</span><div class="product-name">1.000 Takipçi</div><div class="product-footer"><div class="product-price">150₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">365G ♻️</span><div class="product-name">1.000 Takipçi</div><div class="product-footer"><div class="product-price">190₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">30G ♻️</span><div class="product-name">1.000 Beğeni</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">365G ♻️</span><div class="product-name">1.000 Beğeni</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">30G ♻️</span><div class="product-name">1.000 İzlenme</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">365G ♻️</span><div class="product-name">1.000 İzlenme</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 Rastgele Yorum</div><div class="product-footer"><div class="product-price">180₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">30G ♻️</span><div class="product-name">1.000 Yorum Beğenisi</div><div class="product-footer"><div class="product-price">70₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">365G ♻️</span><div class="product-name">1.000 Kaydetme</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">365G ♻️</span><div class="product-name">1.000 Paylaşım</div><div class="product-footer"><div class="product-price">150₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">30G ♻️</span><div class="product-name">1.000 Repost</div><div class="product-footer"><div class="product-price">150₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">30G ♻️</span><div class="product-name">1.000 Video İndirme</div><div class="product-footer"><div class="product-price">100₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 Hikaye Beğeni</div><div class="product-footer"><div class="product-price">80₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-    </div>
-    <div class="note-box">⚠️ <strong>Önemli:</strong> Hesabınızı Herkese Açık yapmalısınız. İşlem yapılırken hesabınız gizlideyse iadenizi alamazsınız.</div>
-  </div>
-
-  <!-- ══ Instagram ══ -->
-  <div class="section theme-instagram">
-    <div class="section-header">
-      <div class="section-icon">📸</div>
-      <div class="section-title">Instagram</div>
-      <div class="section-line"></div>
-      <div class="section-count">14 Ürün</div>
-    </div>
-    <div class="product-grid">
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 Yabancı Takipçi</div><div class="product-footer"><div class="product-price">120₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">365G ♻️</span><div class="product-name">1.000 Yabancı Takipçi</div><div class="product-footer"><div class="product-price">150₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">30G ♻️</span><div class="product-name">1.000 Türk Takipçi</div><div class="product-footer"><div class="product-price">400₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">365G ♻️</span><div class="product-name">1.000 Yabancı Beğeni</div><div class="product-footer"><div class="product-price">60₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">30G ♻️</span><div class="product-name">1.000 Türk Beğeni</div><div class="product-footer"><div class="product-price">120₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 İzlenme</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 Fotoğraf Görüntülenmesi</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 Rastgele Yabancı Yorum</div><div class="product-footer"><div class="product-price">120₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">365G ♻️</span><div class="product-name">1.000 Yorum Beğenisi</div><div class="product-footer"><div class="product-price">200₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 Kaydetme</div><div class="product-footer"><div class="product-price">60₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">365G ♻️</span><div class="product-name">1.000 Paylaşım</div><div class="product-footer"><div class="product-price">50₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 Repost</div><div class="product-footer"><div class="product-price">100₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">90G ♻️</span><div class="product-name">1.000 Türk Kanal Üyesi</div><div class="product-footer"><div class="product-price">120₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-      <div class="product-card"><span class="product-badge">Telafisiz</span><div class="product-name">1.000 Canlı Yayın Beğeni</div><div class="product-footer"><div class="product-price">120₺</div><a href="https://www.instagram.com/mahmut_x_21_" target="_blank" class="buy-btn">Satın Al</a></div></div>
-    </div>
-    <div class="note-box">⚠️ <strong>Önemli:</strong> Hesabınızı Herkese Açık yapmalısınız. İşlem yapılırken hesabınız gizlideyse iadenizi alamazsınız.</div>
-  </div>
-
-</main>
-
-<footer>
-  <div class="footer-logo">M <span>TEDARİK</span></div>
-  <p>Premium dijital ürünler, anında teslim, güvenli alışveriş.</p>
-  <div class="footer-divider"></div>
-  <p>Sipariş için Instagram: <a href="https://www.instagram.com/mahmut_x_21_" target="_blank">@mahmut_x_21_</a></p>
-  <div class="footer-copy">© 2025 M TEDARİK — TÜM HAKLARI SAKLIDIR</div>
-</footer>
-
+    document.querySelectorAll('.cat').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.cat').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('[data-section]').forEach(sec=>{
+          sec.style.display = (filter === 'all' || sec.dataset.section === filter) ? 'block' : 'none';
+        });
+        document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+  </script>
 </body>
 </html>
