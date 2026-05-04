@@ -1,442 +1,1453 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>M Tedarik - Dijital Ürünler</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="M Tedarik dijital abonelikler, premium hesaplar ve sosyal medya hizmetleri için hızlı sipariş sayfası.">
+  <meta name="theme-color" content="#06101f">
+  <title>M Tedarik | Dijital Ürünler</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#030712;
-      --panel:#07111f;
-      --panel2:#0b1628;
-      --card:#0d1b2f;
-      --line:#1e3a5f;
-      --text:#f8fbff;
-      --muted:#8ea3c4;
-      --blue:#12bff3;
-      --blue2:#0877b9;
-      --green:#22c55e;
-      --shadow:0 22px 70px rgba(0,0,0,.45);
+    :root {
+      color-scheme: dark;
+      --bg: #030712;
+      --surface: #07111f;
+      --surface-strong: #0b1628;
+      --card: #0d1b2f;
+      --card-soft: rgba(255, 255, 255, .045);
+      --line: rgba(142, 163, 196, .18);
+      --line-strong: rgba(18, 191, 243, .34);
+      --text: #f8fbff;
+      --muted: #96a9c7;
+      --soft: #c9d8ee;
+      --cyan: #12bff3;
+      --cyan-dark: #0877b9;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --rose: #e1306c;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .36);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
+      --header-h: 76px;
     }
 
-    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-    body{
-      min-height:100vh;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text);
       background:
-        radial-gradient(circle at 20% 0%,rgba(18,191,243,.20),transparent 34%),
-        radial-gradient(circle at 80% 20%,rgba(37,99,235,.16),transparent 30%),
-        linear-gradient(180deg,#020617 0%,#06101f 52%,#020617 100%);
-      color:var(--text);
-      font-family:'Inter',Arial,sans-serif;
+        linear-gradient(180deg, rgba(18, 191, 243, .13), transparent 340px),
+        linear-gradient(135deg, #030712 0%, #06101f 42%, #020617 100%);
+      font-family: "Inter", Arial, sans-serif;
+      text-rendering: optimizeLegibility;
     }
 
-    a{text-decoration:none;color:inherit;}
-    img{max-width:100%;display:block;}
-
-    .topbar{
-      position:sticky;top:0;z-index:50;
-      height:78px;padding:0 5%;
-      display:flex;align-items:center;justify-content:space-between;gap:20px;
-      background:rgba(3,7,18,.78);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(18,191,243,.18);
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .28;
+      background-image:
+        linear-gradient(rgba(18, 191, 243, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18, 191, 243, .08) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 72%);
     }
 
-    .brand{display:flex;align-items:center;gap:14px;min-width:max-content;}
-    .brand-logo{
-      width:58px;height:58px;border-radius:50%;object-fit:cover;
-      filter:drop-shadow(0 0 16px rgba(18,191,243,.45));
-      border:1px solid rgba(18,191,243,.4);
-      background:#fff;
-    }
-    .brand-name{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:3px;line-height:.9;}
-    .brand-name span{color:var(--blue);}
-    .brand-sub{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:5px;}
-
-    .nav{display:flex;align-items:center;gap:10px;}
-    .nav a{
-      padding:9px 14px;border-radius:999px;color:#c8d7ee;font-size:13px;font-weight:700;
-      border:1px solid transparent;transition:.25s;
-    }
-    .nav a:hover{color:#fff;border-color:rgba(18,191,243,.35);background:rgba(18,191,243,.08);}
-    .order-btn{
-      background:linear-gradient(135deg,var(--blue),#2563eb);
-      color:#00111c!important;box-shadow:0 12px 30px rgba(18,191,243,.26);
-      border:none!important;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .hero{position:relative;overflow:hidden;padding:86px 5% 64px;}
-    .hero::before{
-      content:"";position:absolute;inset:0;opacity:.35;
-      background-image:linear-gradient(rgba(18,191,243,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(18,191,243,.08) 1px,transparent 1px);
-      background-size:70px 70px;mask-image:linear-gradient(to bottom,#000,transparent 80%);
+    img {
+      display: block;
+      max-width: 100%;
     }
-    .hero-wrap{position:relative;max-width:1220px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;}
-    .badge{
-      display:inline-flex;align-items:center;gap:9px;margin-bottom:24px;
-      padding:8px 16px;border-radius:999px;background:rgba(18,191,243,.10);
-      border:1px solid rgba(18,191,243,.25);color:#80eaff;font-size:12px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;
-    }
-    .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 18px var(--green);}
-    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(58px,10vw,116px);letter-spacing:7px;line-height:.9;margin-bottom:18px;}
-    h1 span{color:var(--blue);text-shadow:0 0 38px rgba(18,191,243,.32);}
-    .hero p{max-width:570px;color:#b2c4df;font-size:17px;line-height:1.75;margin-bottom:30px;}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:13px;}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      padding:14px 22px;border-radius:16px;font-weight:800;font-size:14px;transition:.25s;
-    }
-    .btn-primary{background:linear-gradient(135deg,var(--blue),#2563eb);color:#00111c;box-shadow:0 16px 38px rgba(18,191,243,.25);}
-    .btn-secondary{border:1px solid rgba(18,191,243,.30);color:#dff9ff;background:rgba(255,255,255,.03);}
-    .btn:hover{transform:translateY(-3px);}
 
-    .hero-card{
-      position:relative;min-height:420px;border-radius:34px;padding:28px;
-      background:linear-gradient(145deg,rgba(13,27,47,.90),rgba(7,17,31,.72));
-      border:1px solid rgba(18,191,243,.22);box-shadow:var(--shadow);overflow:hidden;
+    button,
+    input {
+      font: inherit;
     }
-    .hero-card::after{
-      content:"";position:absolute;inset:-30%;background:radial-gradient(circle,rgba(18,191,243,.18),transparent 42%);
-      animation:floatLight 6s ease-in-out infinite alternate;
-    }
-    @keyframes floatLight{from{transform:translate(-8%,-5%)}to{transform:translate(12%,8%)}}
-    .showcase{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-    .mini-product{
-      min-height:150px;border-radius:24px;padding:18px;overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05);
-      display:flex;flex-direction:column;justify-content:space-between;
-    }
-    .mini-icon{font-size:44px;filter:drop-shadow(0 12px 20px rgba(0,0,0,.4));}
-    .mini-product b{font-size:15px;}
-    .mini-product small{color:var(--muted);margin-top:4px;display:block;}
 
-    .stats{border-top:1px solid rgba(18,191,243,.16);border-bottom:1px solid rgba(18,191,243,.16);background:rgba(7,17,31,.72);}
-    .stats-wrap{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
-    .stat{padding:22px 18px;text-align:center;border-right:1px solid rgba(18,191,243,.13);}
-    .stat:last-child{border-right:none;}
-    .stat b{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:2px;color:#7ee8ff;display:block;}
-    .stat span{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:1px;}
-
-    .category-nav{position:sticky;top:78px;z-index:40;background:rgba(3,7,18,.84);backdrop-filter:blur(14px);border-bottom:1px solid rgba(18,191,243,.13);}
-    .category-scroll{max-width:1220px;margin:0 auto;padding:15px 5%;display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;}
-    .category-scroll::-webkit-scrollbar{display:none;}
-    .cat{
-      flex:0 0 auto;padding:10px 16px;border-radius:999px;border:1px solid rgba(142,163,196,.20);
-      background:rgba(255,255,255,.035);color:#cbd8ec;font-weight:800;font-size:13px;cursor:pointer;transition:.25s;
+    button {
+      border: 0;
+      cursor: pointer;
     }
-    .cat.active,.cat:hover{border-color:rgba(18,191,243,.5);background:rgba(18,191,243,.12);color:#fff;}
 
-    main{max-width:1220px;margin:0 auto;padding:62px 5%;}
-    .section{margin-bottom:68px;scroll-margin-top:150px;}
-    .section-head{display:flex;align-items:center;gap:15px;margin-bottom:24px;}
-    .section-icon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:30px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);}
-    .section-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;}
-    .section-desc{color:var(--muted);font-size:13px;margin-top:3px;}
-    .line{height:1px;flex:1;background:linear-gradient(90deg,rgba(18,191,243,.32),transparent);}
-    .count{font-size:12px;color:#9eefff;border:1px solid rgba(18,191,243,.24);background:rgba(18,191,243,.08);padding:7px 12px;border-radius:999px;font-weight:800;}
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:18px;}
-    .product{
-      border-radius:24px;overflow:hidden;background:linear-gradient(180deg,rgba(13,27,47,.92),rgba(7,17,31,.96));
-      border:1px solid rgba(142,163,196,.18);box-shadow:0 18px 50px rgba(0,0,0,.22);transition:.28s;position:relative;
+    :focus-visible {
+      outline: 3px solid rgba(18, 191, 243, .62);
+      outline-offset: 3px;
     }
-    .product:hover{transform:translateY(-7px);border-color:rgba(18,191,243,.42);box-shadow:0 24px 70px rgba(18,191,243,.10);}
-    .photo{
-      height:156px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(135deg,var(--c1),var(--c2));
-    }
-    .photo::before{
-      content:"";position:absolute;inset:0;opacity:.24;
-      background-image:radial-gradient(circle at 20% 20%,#fff 0 2px,transparent 2px),linear-gradient(45deg,rgba(255,255,255,.24),transparent 55%);
-      background-size:28px 28px,100% 100%;
-    }
-    .photo::after{
-      content:"";position:absolute;width:180px;height:180px;border:2px solid rgba(255,255,255,.22);border-radius:50%;right:-48px;bottom:-70px;
-    }
-    .photo .emoji{font-size:56px;z-index:2;filter:drop-shadow(0 14px 22px rgba(0,0,0,.45));}
-    .photo .brand-word{position:absolute;left:18px;bottom:14px;font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;z-index:2;text-shadow:0 8px 22px rgba(0,0,0,.45);}
-    .body{padding:18px;}
-    .tag{display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:900;color:#dff9ff;background:rgba(18,191,243,.10);border:1px solid rgba(18,191,243,.20);}
-    .name{min-height:48px;font-size:15px;line-height:1.45;font-weight:800;color:#f7fbff;}
-    .detail{margin-top:6px;min-height:18px;color:var(--muted);font-size:12px;line-height:1.45;}
-    .bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(142,163,196,.14);}
-    .price{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:1px;color:#7ee8ff;line-height:1;}
-    .buy{padding:10px 14px;border-radius:13px;background:rgba(18,191,243,.12);border:1px solid rgba(18,191,243,.28);color:#dff9ff;font-weight:900;font-size:12px;white-space:nowrap;transition:.25s;}
-    .buy:hover{background:linear-gradient(135deg,var(--blue),#2563eb);color:#00111c;}
 
-    .notice{margin-top:18px;padding:16px 18px;border-radius:18px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.18);color:#facc15;font-size:13px;line-height:1.7;}
-
-    .contact{margin-top:76px;border-radius:32px;padding:32px;background:linear-gradient(145deg,rgba(13,27,47,.96),rgba(7,17,31,.85));border:1px solid rgba(18,191,243,.20);box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;}
-    .contact h2{font-family:'Bebas Neue',sans-serif;font-size:46px;letter-spacing:3px;margin-bottom:10px;}
-    .contact p{color:var(--muted);line-height:1.7;margin-bottom:20px;}
-    .contact-list{display:grid;gap:10px;}
-    .contact-item{padding:14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#dbeafe;font-size:14px;}
-    .big-logo{width:260px;max-width:80%;margin:0 auto;filter:drop-shadow(0 0 34px rgba(18,191,243,.38));}
-
-    footer{padding:44px 5%;text-align:center;border-top:1px solid rgba(18,191,243,.16);background:#020617;color:var(--muted);}
-    .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:5px;color:#fff;margin-bottom:8px;}
-    .footer-brand span{color:var(--blue);}
-
-    @media(max-width:920px){
-      .hero-wrap,.contact{grid-template-columns:1fr;}
-      .nav{display:none;}
-      .stats-wrap{grid-template-columns:repeat(2,1fr);}
-      .hero-card{min-height:auto;}
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
     }
-    @media(max-width:560px){
-      .topbar{height:72px;padding:0 4%;}
-      .brand-logo{width:48px;height:48px;}
-      .brand-name{font-size:27px;}
-      .hero{padding:56px 4% 44px;}
-      .showcase{grid-template-columns:1fr;}
-      .grid{grid-template-columns:1fr;}
-      .section-head{align-items:flex-start;}
-      .line,.count{display:none;}
-      .category-nav{top:72px;}
-      main{padding:44px 4%;}
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: var(--header-h);
+      background: rgba(3, 7, 18, .82);
+      border-bottom: 1px solid rgba(18, 191, 243, .16);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      min-width: max-content;
+    }
+
+    .brand-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 1px solid rgba(18, 191, 243, .42);
+      box-shadow: 0 0 0 6px rgba(18, 191, 243, .06);
+      filter: drop-shadow(0 0 18px rgba(18, 191, 243, .36));
+    }
+
+    .brand-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 33px;
+      line-height: .88;
+      letter-spacing: 3px;
+    }
+
+    .brand-title span,
+    .accent {
+      color: var(--cyan);
+    }
+
+    .brand-kicker {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .nav-link {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      color: var(--soft);
+      font-size: 13px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, .055);
+      border-color: rgba(18, 191, 243, .24);
+    }
+
+    .nav-link.primary,
+    .btn.primary {
+      color: #00111c;
+      background: linear-gradient(135deg, var(--cyan), #4ade80);
+      box-shadow: 0 14px 34px rgba(18, 191, 243, .22);
+    }
+
+    .hero {
+      position: relative;
+      padding: 84px 0 56px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, .82fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: max-content;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: #94f3ff;
+      background: rgba(18, 191, 243, .10);
+      border: 1px solid rgba(18, 191, 243, .25);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+    }
+
+    h1 {
+      max-width: 780px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(58px, 9vw, 112px);
+      line-height: .88;
+      letter-spacing: 6px;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      margin-top: 22px;
+      color: #b6c7e2;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border-radius: 14px;
+      color: #e7f9ff;
+      background: rgba(255, 255, 255, .055);
+      border: 1px solid rgba(142, 163, 196, .20);
+      font-size: 14px;
+      font-weight: 900;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    .platform-board {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .platform-tile {
+      min-height: 148px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: linear-gradient(135deg, var(--tile-a), var(--tile-b));
+      box-shadow: var(--shadow);
+    }
+
+    .platform-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(140deg, rgba(255, 255, 255, .22), transparent 42%),
+        radial-gradient(circle at 86% 16%, rgba(255, 255, 255, .20), transparent 26%);
+      opacity: .75;
+    }
+
+    .platform-mark,
+    .platform-name,
+    .platform-desc {
+      position: relative;
+      z-index: 1;
+    }
+
+    .platform-mark {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: #fff;
+      background: rgba(0, 0, 0, .22);
+      border: 1px solid rgba(255, 255, 255, .15);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16);
+    }
+
+    .platform-mark svg,
+    .section-icon svg,
+    .product-logo svg {
+      width: 30px;
+      height: 30px;
+      display: block;
+      overflow: visible;
+    }
+
+    .platform-mark .text-logo,
+    .section-icon .text-logo,
+    .product-logo .text-logo {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 400;
+    }
+
+    .platform-name {
+      margin-top: 22px;
+      font-weight: 900;
+      font-size: 15px;
+    }
+
+    .platform-desc {
+      margin-top: 5px;
+      color: rgba(255, 255, 255, .72);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .metrics {
+      border-block: 1px solid rgba(18, 191, 243, .15);
+      background: rgba(7, 17, 31, .72);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .metric {
+      min-height: 102px;
+      display: grid;
+      place-items: center;
+      padding: 20px 16px;
+      text-align: center;
+      border-right: 1px solid rgba(18, 191, 243, .12);
+    }
+
+    .metric:last-child {
+      border-right: 0;
+    }
+
+    .metric strong {
+      display: block;
+      color: #8eeaff;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 36px;
+      line-height: 1;
+      letter-spacing: 2px;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .filter-bar {
+      position: sticky;
+      top: var(--header-h);
+      z-index: 40;
+      background: rgba(3, 7, 18, .86);
+      border-bottom: 1px solid rgba(18, 191, 243, .13);
+      backdrop-filter: blur(16px);
+    }
+
+    .filter-inner {
+      display: grid;
+      grid-template-columns: minmax(220px, 330px) minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      padding-block: 14px;
+    }
+
+    .search {
+      position: relative;
+    }
+
+    .search svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      color: #8ea3c4;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .search input {
+      width: 100%;
+      height: 42px;
+      padding: 0 14px 0 42px;
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(255, 255, 255, .055);
+      border: 1px solid rgba(142, 163, 196, .20);
+      outline: 0;
+    }
+
+    .search input::placeholder {
+      color: #7d8faa;
+    }
+
+    .category-list {
+      display: flex;
+      gap: 9px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 1px;
+    }
+
+    .category-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-btn {
+      min-height: 42px;
+      flex: 0 0 auto;
+      padding: 0 15px;
+      border-radius: 999px;
+      color: #d2def0;
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid rgba(142, 163, 196, .20);
+      font-size: 13px;
+      font-weight: 900;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .category-btn:hover,
+    .category-btn.is-active {
+      color: #fff;
+      background: rgba(18, 191, 243, .13);
+      border-color: rgba(18, 191, 243, .52);
+    }
+
+    main {
+      padding: 58px 0 72px;
+    }
+
+    .section {
+      scroll-margin-top: 154px;
+      margin-bottom: 68px;
+    }
+
+    .section.is-hidden {
+      display: none;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .section-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      border: 1px solid rgba(255, 255, 255, .13);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .25);
+    }
+
+    .section-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: 3px;
+    }
+
+    .section-desc {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .section-count {
+      white-space: nowrap;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #a8f1ff;
+      background: rgba(18, 191, 243, .10);
+      border: 1px solid rgba(18, 191, 243, .22);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(246px, 1fr));
+      gap: 18px;
+    }
+
+    .product {
+      overflow: hidden;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(13, 27, 47, .94), rgba(7, 17, 31, .98));
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      border-color: rgba(18, 191, 243, .45);
+      box-shadow: 0 24px 66px rgba(18, 191, 243, .10);
+    }
+
+    .product-media {
+      min-height: 148px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      overflow: hidden;
+      padding: 18px;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+    }
+
+    .product-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .24), transparent 45%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, .10) 0 1px, transparent 1px 13px);
+      opacity: .64;
+    }
+
+    .product-media::after {
+      content: "";
+      position: absolute;
+      width: 184px;
+      height: 184px;
+      right: -62px;
+      top: -72px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, .18);
+    }
+
+    .product-logo,
+    .product-platform {
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-logo {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 16px;
+      color: #fff;
+      background: rgba(0, 0, 0, .22);
+      border: 1px solid rgba(255, 255, 255, .18);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16);
+    }
+
+    .product-logo svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .product-platform {
+      color: rgba(255, 255, 255, .92);
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 27px;
+      line-height: 1;
+      letter-spacing: 2px;
+      text-align: right;
+      text-shadow: 0 10px 24px rgba(0, 0, 0, .34);
+    }
+
+    .product-body {
+      padding: 18px;
+    }
+
+    .tag {
+      width: max-content;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: #e6fbff;
+      background: rgba(18, 191, 243, .10);
+      border: 1px solid rgba(18, 191, 243, .20);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .product-name {
+      min-height: 48px;
+      margin-top: 13px;
+      color: #f8fbff;
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 900;
+    }
+
+    .product-detail {
+      min-height: 36px;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 17px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(142, 163, 196, .14);
+    }
+
+    .price {
+      color: #89eaff;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .buy {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 13px;
+      border-radius: 12px;
+      color: #e6fbff;
+      background: rgba(18, 191, 243, .12);
+      border: 1px solid rgba(18, 191, 243, .28);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .buy:hover {
+      color: #00111c;
+      background: linear-gradient(135deg, var(--cyan), #4ade80);
+      border-color: transparent;
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 15px 17px;
+      border-radius: 16px;
+      color: #fee08a;
+      background: rgba(245, 158, 11, .09);
+      border: 1px solid rgba(245, 158, 11, .22);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .empty-state {
+      display: none;
+      margin-top: 26px;
+      padding: 22px;
+      border-radius: 18px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid rgba(142, 163, 196, .18);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .empty-state.is-visible {
+      display: block;
+    }
+
+    .contact-band {
+      padding: 64px 0;
+      border-top: 1px solid rgba(18, 191, 243, .14);
+      background:
+        linear-gradient(135deg, rgba(18, 191, 243, .12), transparent 34%),
+        rgba(7, 17, 31, .70);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .contact h2 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(42px, 6vw, 58px);
+      line-height: .95;
+      letter-spacing: 3px;
+    }
+
+    .contact p {
+      max-width: 640px;
+      margin-top: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .contact-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 24px 0;
+    }
+
+    .contact-item {
+      min-height: 78px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .09);
+    }
+
+    .contact-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-top: 8px;
+      color: #eff8ff;
+      font-size: 14px;
+    }
+
+    .logo-stage {
+      display: grid;
+      place-items: center;
+      min-height: 300px;
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .08), transparent),
+        linear-gradient(180deg, rgba(13, 27, 47, .94), rgba(7, 17, 31, .98));
+      border: 1px solid rgba(18, 191, 243, .20);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo-stage::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(18, 191, 243, .12);
+      filter: blur(8px);
+    }
+
+    .big-logo {
+      position: relative;
+      width: min(230px, 78%);
+      filter: drop-shadow(0 0 34px rgba(18, 191, 243, .38));
+    }
+
+    footer {
+      padding: 36px 20px;
+      text-align: center;
+      color: var(--muted);
+      background: #020617;
+      border-top: 1px solid rgba(18, 191, 243, .16);
+    }
+
+    .footer-brand {
+      margin-bottom: 8px;
+      color: #fff;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 40px;
+      line-height: 1;
+      letter-spacing: 5px;
+    }
+
+    .footer-brand span {
+      color: var(--cyan);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 980px) {
+      :root {
+        --header-h: 72px;
+      }
+
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .platform-board {
+        max-width: 620px;
+      }
+
+      .metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .metric:nth-child(2) {
+        border-right: 0;
+      }
+
+      .filter-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .topbar-inner {
+        gap: 14px;
+      }
+
+      .brand-logo {
+        width: 48px;
+        height: 48px;
+      }
+
+      .brand-title {
+        font-size: 28px;
+        letter-spacing: 2px;
+      }
+
+      .brand-kicker {
+        font-size: 10px;
+      }
+
+      .nav-link:not(.primary) {
+        display: none;
+      }
+
+      .nav-link.primary {
+        min-height: 38px;
+        padding-inline: 12px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 54px 0 42px;
+      }
+
+      h1 {
+        letter-spacing: 4px;
+      }
+
+      .hero-copy {
+        font-size: 15px;
+      }
+
+      .platform-board,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        grid-template-columns: auto minmax(0, 1fr);
+      }
+
+      .section-count {
+        display: none;
+      }
+
+      .metric {
+        min-height: 92px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(18, 191, 243, .12);
+      }
+
+      .metric:nth-child(3),
+      .metric:nth-child(4) {
+        border-bottom: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
+
 <body>
   <header class="topbar">
-    <a href="#" class="brand">
-      <!-- Logo dosyanı HTML ile aynı klasöre koy: m tedarik logo.png -->
-      <img src="m tedarik logo.png" alt="M Tedarik Logo" class="brand-logo" />
-      <div>
-        <div class="brand-name">M <span>TEDARİK</span></div>
-        <div class="brand-sub">Dijital Ürünler</div>
-      </div>
-    </a>
-    <nav class="nav">
-      <a href="#products">Ürünler</a>
-      <a href="#contact">İletişim</a>
-      <a class="order-btn" href="https://www.instagram.com/mahmut_x_21_" target="_blank">Sipariş Ver</a>
-    </nav>
+    <div class="container topbar-inner">
+      <a href="#" class="brand" aria-label="M Tedarik ana sayfa">
+        <img src="m tedarik logo.png" alt="M Tedarik Logo" class="brand-logo">
+        <div>
+          <div class="brand-title">M <span>TEDARİK</span></div>
+          <div class="brand-kicker">Dijital Ürünler</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Ana menü">
+        <a class="nav-link" href="#products">Ürünler</a>
+        <a class="nav-link" href="#contact">İletişim</a>
+        <a class="nav-link primary js-order-link" href="https://www.instagram.com/mahmut_x_21_/" target="_blank" rel="noopener noreferrer">Sipariş Ver</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-wrap">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero-grid">
       <div>
-        <div class="badge"><span class="dot"></span> 7/24 Güvenilir Dijital Tedarik</div>
-        <h1>M <span>TEDARİK</span></h1>
-        <p>Premium dijital ürünler, abonelikler ve sosyal medya hizmetleri için modern, hızlı ve profesyonel satış paneli. Ürünleri incele, Instagram üzerinden sipariş oluştur.</p>
+        <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span> 7/24 Dijital Tedarik</div>
+        <h1 id="hero-title">M <span class="accent">TEDARİK</span></h1>
+        <p class="hero-copy">Premium hesaplar, dijital abonelikler ve sosyal medya hizmetleri için hızlı, düzenli ve güvenilir sipariş vitrini. Ürünü seç, Instagram üzerinden siparişini oluştur.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.instagram.com/mahmut_x_21_" target="_blank">Hemen Sipariş Ver →</a>
-          <a class="btn btn-secondary" href="#products">Ürünleri İncele</a>
+          <a class="btn primary js-order-link" href="https://www.instagram.com/mahmut_x_21_/" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Hemen Sipariş Ver
+          </a>
+          <a class="btn" href="#products">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            Ürünleri İncele
+          </a>
         </div>
       </div>
-      <div class="hero-card">
-        <div class="showcase">
-          <div class="mini-product" style="background:linear-gradient(135deg,#10a37f,#063b31)"><div class="mini-icon">🤖</div><div><b>ChatGPT</b><small>Premium hesaplar</small></div></div>
-          <div class="mini-product" style="background:linear-gradient(135deg,#e50914,#3a0608)"><div class="mini-icon">🎥</div><div><b>Netflix</b><small>Dijital abonelik</small></div></div>
-          <div class="mini-product" style="background:linear-gradient(135deg,#1db954,#062513)"><div class="mini-icon">🎵</div><div><b>Spotify</b><small>Premium müzik</small></div></div>
-          <div class="mini-product" style="background:linear-gradient(135deg,#e1306c,#411069)"><div class="mini-icon">📸</div><div><b>Sosyal Medya</b><small>Hizmet paketleri</small></div></div>
+
+      <div class="platform-board" aria-label="Öne çıkan platformlar">
+        <div class="platform-tile" style="--tile-a:#10a37f;--tile-b:#053b31">
+          <div class="platform-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" focusable="false">
+              <path d="M32 8 47 16.7v17.4L32 43 17 34.1V16.7L32 8Z" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linejoin="round"></path>
+              <path d="M17.5 28.5 32 20l14.5 8.5M32 20v23" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M22 48.4 32 54l10-5.6" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="platform-name">ChatGPT</div>
+            <div class="platform-desc">Premium hesap seçenekleri</div>
+          </div>
+        </div>
+        <div class="platform-tile" style="--tile-a:#e50914;--tile-b:#3a0608">
+          <div class="platform-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" focusable="false">
+              <path d="M18 52V12h10l8.5 21.5V12H46v40H36L27.5 30.5V52H18Z" fill="currentColor"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="platform-name">Netflix</div>
+            <div class="platform-desc">Profil ve kişisel hesap</div>
+          </div>
+        </div>
+        <div class="platform-tile" style="--tile-a:#1db954;--tile-b:#062513">
+          <div class="platform-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" focusable="false">
+              <circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="4.5"></circle>
+              <path d="M21 27c8-2.5 18-1.6 25 2.6M23 34c6.6-1.7 14.7-1.1 20 2.1M25 40c5-1 10.7-.6 15 1.7" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="platform-name">Spotify</div>
+            <div class="platform-desc">Premium müzik paketleri</div>
+          </div>
+        </div>
+        <div class="platform-tile" style="--tile-a:#e1306c;--tile-b:#5b21b6">
+          <div class="platform-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" focusable="false">
+              <rect x="14" y="14" width="36" height="36" rx="11" fill="none" stroke="currentColor" stroke-width="4.6"></rect>
+              <circle cx="32" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="4.6"></circle>
+              <circle cx="43" cy="21" r="3" fill="currentColor"></circle>
+            </svg>
+          </div>
+          <div>
+            <div class="platform-name">Sosyal Medya</div>
+            <div class="platform-desc">Etkileşim hizmetleri</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="stats">
-    <div class="stats-wrap">
-      <div class="stat"><b>50+</b><span>Ürün Paketi</span></div>
-      <div class="stat"><b>7/24</b><span>Destek</span></div>
-      <div class="stat"><b>8</b><span>Platform</span></div>
-      <div class="stat"><b>%100</b><span>Hızlı Teslim</span></div>
+  <section class="metrics" aria-label="M Tedarik özet bilgiler">
+    <div class="container metrics-grid">
+      <div class="metric"><div><strong>50+</strong><span>Ürün Paketi</span></div></div>
+      <div class="metric"><div><strong>7/24</strong><span>Destek</span></div></div>
+      <div class="metric"><div><strong>8</strong><span>Platform</span></div></div>
+      <div class="metric"><div><strong>%100</strong><span>Hızlı Teslim</span></div></div>
     </div>
   </section>
 
-  <div class="category-nav">
-    <div class="category-scroll">
-      <button class="cat active" data-filter="all">Tümü</button>
-      <button class="cat" data-filter="chatgpt">🤖 ChatGPT</button>
-      <button class="cat" data-filter="exxen">📺 Exxen</button>
-      <button class="cat" data-filter="blutv">🎬 BluTV / HBO</button>
-      <button class="cat" data-filter="netflix">🎥 Netflix</button>
-      <button class="cat" data-filter="spotify">🎵 Spotify</button>
-      <button class="cat" data-filter="capcut">🎞️ CapCut</button>
-      <button class="cat" data-filter="tiktok">🎶 TikTok</button>
-      <button class="cat" data-filter="instagram">📸 Instagram</button>
+  <section class="filter-bar" aria-label="Ürün filtreleri">
+    <div class="container filter-inner">
+      <label class="search">
+        <span class="sr-only">Ürün ara</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path d="m21 21-4.3-4.3m1.3-5.2a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <input id="searchInput" type="search" placeholder="Ürün ara..." autocomplete="off">
+      </label>
+
+      <div class="category-list" id="categoryList" role="list" aria-label="Kategoriler"></div>
     </div>
-  </div>
+  </section>
 
-  <main id="products"></main>
+  <main id="products" class="container" tabindex="-1">
+    <div id="productSections"></div>
+    <div id="emptyState" class="empty-state">Aramanızla eşleşen ürün bulunamadı.</div>
+  </main>
 
-  <section id="contact" class="contact" style="max-width:1100px;margin-left:auto;margin-right:auto;">
-    <div>
-      <h2>Sipariş ve İletişim</h2>
-      <p>Ürün satın almak için Instagram üzerinden iletişime geçebilirsin. Sipariş butonları doğrudan Instagram hesabına yönlendirir.</p>
-      <div class="contact-list">
-        <div class="contact-item">📲 Instagram: <b>@mahmut_x_21_</b></div>
-        <div class="contact-item">⚡ Teslimat: <b>Hızlı / Anlık</b></div>
-        <div class="contact-item">🛡️ Destek: <b>7/24</b></div>
+  <section id="contact" class="contact-band">
+    <div class="container contact-grid contact">
+      <div>
+        <h2>Sipariş ve İletişim</h2>
+        <p>Satın almak istediğin ürünü seçtikten sonra Instagram üzerinden iletişime geçebilirsin. Sipariş bağlantıları doğrudan Instagram hesabına yönlendirir.</p>
+
+        <div class="contact-list">
+          <div class="contact-item"><span>Instagram</span><strong>@mahmut_x_21_</strong></div>
+          <div class="contact-item"><span>Teslimat</span><strong>Hızlı / Anlık</strong></div>
+          <div class="contact-item"><span>Destek</span><strong>7/24</strong></div>
+        </div>
+
+        <a class="btn primary js-order-link" href="https://www.instagram.com/mahmut_x_21_/" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+            <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          Instagram'a Git
+        </a>
       </div>
-      <br>
-      <a class="btn btn-primary" href="https://www.instagram.com/mahmut_x_21_" target="_blank">Instagram'a Git →</a>
+
+      <div class="logo-stage" aria-hidden="true">
+        <img src="m tedarik logo.png" alt="" class="big-logo">
+      </div>
     </div>
-    <div><img src="m tedarik logo.png" alt="M Tedarik Logo" class="big-logo" /></div>
   </section>
 
   <footer>
     <div class="footer-brand">M <span>TEDARİK</span></div>
-    <p>© 2026 M Tedarik — Tüm hakları saklıdır.</p>
+    <p>© 2026 M Tedarik. Tüm hakları saklıdır.</p>
   </footer>
 
   <script>
-    const orderLink = "https://www.instagram.com/mahmut_x_21_";
+    const ORDER_LINK = "https://www.instagram.com/mahmut_x_21_/";
+
+    const logos = {
+      chatgpt: `
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <path d="M32 8 47 16.7v17.4L32 43 17 34.1V16.7L32 8Z" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linejoin="round"></path>
+          <path d="M17.5 28.5 32 20l14.5 8.5M32 20v23" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M22 48.4 32 54l10-5.6" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      `,
+      exxen: `
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect x="10" y="14" width="44" height="36" rx="10" fill="none" stroke="currentColor" stroke-width="4"></rect>
+          <text class="text-logo" x="32" y="38" text-anchor="middle" fill="currentColor">EX</text>
+        </svg>
+      `,
+      blutv: `
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect x="9" y="16" width="46" height="32" rx="9" fill="none" stroke="currentColor" stroke-width="4"></rect>
+          <path d="M24 48h16M29 54h6" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+          <text class="text-logo" x="32" y="37" text-anchor="middle" fill="currentColor">TV</text>
+        </svg>
+      `,
+      netflix: `
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <path d="M18 52V12h10l8.5 21.5V12H46v40H36L27.5 30.5V52H18Z" fill="currentColor"></path>
+        </svg>
+      `,
+      spotify: `
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="4.5"></circle>
+          <path d="M21 27c8-2.5 18-1.6 25 2.6M23 34c6.6-1.7 14.7-1.1 20 2.1M25 40c5-1 10.7-.6 15 1.7" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+        </svg>
+      `,
+      capcut: `
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <path d="M18 17h28L18 47h28M18 47l28-30" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      `,
+      tiktok: `
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <path d="M37 12v27.5A10.5 10.5 0 1 1 28 29v8.5a3.1 3.1 0 1 0 3 3.1V12h6Zm0 0c2 7.5 7.3 12 14 12.6v8.1c-5.4-.2-10.1-2.1-14-5.8V12Z" fill="currentColor"></path>
+        </svg>
+      `,
+      instagram: `
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect x="14" y="14" width="36" height="36" rx="11" fill="none" stroke="currentColor" stroke-width="4.6"></rect>
+          <circle cx="32" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="4.6"></circle>
+          <circle cx="43" cy="21" r="3" fill="currentColor"></circle>
+        </svg>
+      `
+    };
 
     const sections = [
       {
-        id:"chatgpt", title:"ChatGPT", icon:"🤖", desc:"Premium ve özel hesap seçenekleri", c1:"#10a37f", c2:"#063b31",
-        notice:"⚡ Not: Sipariş öncesi ürün detayını ve teslimat şeklini Instagram üzerinden teyit ediniz.",
-        products:[
-          ["ChatGPT Plus 4.0","Ortak Hesap","100₺","Premium erişim"],
-          ["ChatGPT Plus 4.0","Kişisel Hesap","140₺","Kişiye özel kullanım"],
-          ["ChatGPT Plus 5.2","Ortak Hesap","120₺","Avantajlı paket"],
-          ["ChatGPT Plus 5.2","Kişisel Hesap","150₺","Kişisel kullanım"],
-          ["ChatGPT Business","Kendi Hesabınıza","100₺","Business seçenek"],
-          ["ChatGPT Business Kişisel","Kişisel Hesap","150₺","Özel teslim"],
-          ["Otomatik Kod Sistemi","1 Aylık · Lisanslı","200₺","Gmail'e otomatik teslim"],
-          ["Otomatik Kod Sistemi","Sınırsız · Lisanssız","600₺","7/24 otomatik teslim"]
+        id: "chatgpt",
+        title: "ChatGPT",
+        mark: "AI",
+        logo: logos.chatgpt,
+        desc: "Premium ve özel hesap seçenekleri",
+        colors: ["#10a37f", "#063b31"],
+        notice: "Sipariş öncesi ürün detayını ve teslimat şeklini Instagram üzerinden teyit ediniz.",
+        products: [
+          ["ChatGPT Plus 4.0", "Ortak Hesap", "100₺", "Premium erişim"],
+          ["ChatGPT Plus 4.0", "Kişisel Hesap", "140₺", "Kişiye özel kullanım"],
+          ["ChatGPT Plus 5.2", "Ortak Hesap", "120₺", "Avantajlı paket"],
+          ["ChatGPT Plus 5.2", "Kişisel Hesap", "150₺", "Kişisel kullanım"],
+          ["ChatGPT Business", "Kendi Hesabınıza", "100₺", "Business seçenek"],
+          ["ChatGPT Business Kişisel", "Kişisel Hesap", "150₺", "Özel teslim"],
+          ["Otomatik Kod Sistemi", "1 Aylık · Lisanslı", "200₺", "Gmail'e otomatik teslim"],
+          ["Otomatik Kod Sistemi", "Sınırsız · Lisanssız", "600₺", "7/24 otomatik teslim"]
         ]
       },
       {
-        id:"exxen", title:"Exxen", icon:"📺", desc:"Exxen hesap ve kod ürünleri", c1:"#f97316", c2:"#3b1305",
-        products:[
-          ["Exxen Hesap","1 Aylık","70₺","Dijital teslim"],
-          ["Exxen Hesap","3 Aylık","120₺","Avantajlı paket"],
-          ["Exxen Kod","3 Aylık Kod","50₺","Kod teslim"]
+        id: "exxen",
+        title: "Exxen",
+        mark: "EX",
+        logo: logos.exxen,
+        desc: "Exxen hesap ve kod ürünleri",
+        colors: ["#f97316", "#3b1305"],
+        products: [
+          ["Exxen Hesap", "1 Aylık", "70₺", "Dijital teslim"],
+          ["Exxen Hesap", "3 Aylık", "120₺", "Avantajlı paket"],
+          ["Exxen Kod", "3 Aylık Kod", "50₺", "Kod teslim"]
         ]
       },
       {
-        id:"blutv", title:"BluTV / HBO Max", icon:"🎬", desc:"Film ve dizi abonelikleri", c1:"#7c3aed", c2:"#1d0b3b",
-        products:[
-          ["BluTV Üyelik","Üyelik","60₺","Dijital hesap"],
-          ["BluTV Üyelik","Toplu Alım","50₺","Toplu fiyat"]
+        id: "blutv",
+        title: "BluTV / HBO Max",
+        mark: "HB",
+        logo: logos.blutv,
+        desc: "Film ve dizi abonelikleri",
+        colors: ["#7c3aed", "#1d0b3b"],
+        products: [
+          ["BluTV Üyelik", "Üyelik", "60₺", "Dijital hesap"],
+          ["BluTV Üyelik", "Toplu Alım", "50₺", "Toplu fiyat"]
         ]
       },
       {
-        id:"netflix", title:"Netflix", icon:"🎥", desc:"Netflix profil ve hesap seçenekleri", c1:"#e50914", c2:"#350607",
-        products:[
-          ["Netflix 1 Aylık","Kişiye Özel Profil","150₺","Profil teslim"],
-          ["Netflix 1 Aylık","Kişisel Hesap","300₺","Kişisel kullanım"]
+        id: "netflix",
+        title: "Netflix",
+        mark: "N",
+        logo: logos.netflix,
+        desc: "Netflix profil ve hesap seçenekleri",
+        colors: ["#e50914", "#350607"],
+        products: [
+          ["Netflix 1 Aylık", "Kişiye Özel Profil", "150₺", "Profil teslim"],
+          ["Netflix 1 Aylık", "Kişisel Hesap", "300₺", "Kişisel kullanım"]
         ]
       },
       {
-        id:"spotify", title:"Spotify", icon:"🎵", desc:"Spotify Premium paketleri", c1:"#1db954", c2:"#062513",
-        products:[
-          ["Spotify Premium","3 Ay Garantili","80₺","3. ay için 99₺ ücret alır"],
-          ["Spotify Premium 1 Aylık","Kendi Hesabınıza","50₺","Gmail'e davet gönderilir"],
-          ["Spotify Premium","4 Ay Garantili","100₺","99₺ ücret istemez"]
+        id: "spotify",
+        title: "Spotify",
+        mark: "S",
+        logo: logos.spotify,
+        desc: "Spotify Premium paketleri",
+        colors: ["#1db954", "#062513"],
+        products: [
+          ["Spotify Premium", "3 Ay Garantili", "80₺", "3. ay için 99₺ ücret alır"],
+          ["Spotify Premium 1 Aylık", "Kendi Hesabınıza", "50₺", "Gmail'e davet gönderilir"],
+          ["Spotify Premium", "4 Ay Garantili", "100₺", "99₺ ücret istemez"]
         ]
       },
       {
-        id:"capcut", title:"CapCut", icon:"🎞️", desc:"Video düzenleme premium paketleri", c1:"#a855f7", c2:"#2e0b48",
-        products:[
-          ["CapCut Premium 1 Aylık","Ortak","100₺","Ortak kullanım"],
-          ["CapCut Premium 1 Aylık","Kişiye Özel","150₺","Özel kullanım"]
+        id: "capcut",
+        title: "CapCut",
+        mark: "CC",
+        logo: logos.capcut,
+        desc: "Video düzenleme premium paketleri",
+        colors: ["#a855f7", "#2e0b48"],
+        products: [
+          ["CapCut Premium 1 Aylık", "Ortak", "100₺", "Ortak kullanım"],
+          ["CapCut Premium 1 Aylık", "Kişiye Özel", "150₺", "Özel kullanım"]
         ]
       },
       {
-        id:"tiktok", title:"TikTok", icon:"🎶", desc:"TikTok sosyal medya hizmetleri", c1:"#00f2ea", c2:"#ff0050",
-        notice:"⚠️ Önemli: İşlem öncesi hesap herkese açık olmalıdır. Gizli hesaplarda işlem sağlıklı ilerlemeyebilir.",
-        products:[
-          ["1.000 Takipçi","Telafisiz","120₺","Hızlı işlem"],
-          ["1.000 Takipçi","7G ♻️","130₺","7 gün telafi"],
-          ["1.000 Takipçi","30G ♻️","150₺","30 gün telafi"],
-          ["1.000 Takipçi","365G ♻️","190₺","365 gün telafi"],
-          ["1.000 Beğeni","30G ♻️","50₺","Video beğeni"],
-          ["1.000 Beğeni","365G ♻️","50₺","Uzun telafi"],
-          ["1.000 İzlenme","30G ♻️","50₺","Video izlenme"],
-          ["1.000 İzlenme","365G ♻️","50₺","Uzun telafi"],
-          ["1.000 Rastgele Yorum","Telafisiz","180₺","Yorum paketi"],
-          ["1.000 Yorum Beğenisi","30G ♻️","70₺","Yorum etkileşimi"],
-          ["1.000 Kaydetme","365G ♻️","50₺","Kaydetme paketi"],
-          ["1.000 Paylaşım","365G ♻️","150₺","Paylaşım paketi"],
-          ["1.000 Repost","30G ♻️","150₺","Repost paketi"],
-          ["1.000 Video İndirme","30G ♻️","100₺","İndirme paketi"],
-          ["1.000 Hikaye Beğeni","Telafisiz","80₺","Hikaye etkileşimi"]
+        id: "tiktok",
+        title: "TikTok",
+        mark: "TT",
+        logo: logos.tiktok,
+        desc: "TikTok sosyal medya hizmetleri",
+        colors: ["#00f2ea", "#ff0050"],
+        notice: "İşlem öncesi hesap herkese açık olmalıdır. Gizli hesaplarda işlem sağlıklı ilerlemeyebilir.",
+        products: [
+          ["1.000 Takipçi", "Telafisiz", "120₺", "Hızlı işlem"],
+          ["1.000 Takipçi", "7G Telafi", "130₺", "7 gün telafi"],
+          ["1.000 Takipçi", "30G Telafi", "150₺", "30 gün telafi"],
+          ["1.000 Takipçi", "365G Telafi", "190₺", "365 gün telafi"],
+          ["1.000 Beğeni", "30G Telafi", "50₺", "Video beğeni"],
+          ["1.000 Beğeni", "365G Telafi", "50₺", "Uzun telafi"],
+          ["1.000 İzlenme", "30G Telafi", "50₺", "Video izlenme"],
+          ["1.000 İzlenme", "365G Telafi", "50₺", "Uzun telafi"],
+          ["1.000 Rastgele Yorum", "Telafisiz", "180₺", "Yorum paketi"],
+          ["1.000 Yorum Beğenisi", "30G Telafi", "70₺", "Yorum etkileşimi"],
+          ["1.000 Kaydetme", "365G Telafi", "50₺", "Kaydetme paketi"],
+          ["1.000 Paylaşım", "365G Telafi", "150₺", "Paylaşım paketi"],
+          ["1.000 Repost", "30G Telafi", "150₺", "Repost paketi"],
+          ["1.000 Video İndirme", "30G Telafi", "100₺", "İndirme paketi"],
+          ["1.000 Hikaye Beğeni", "Telafisiz", "80₺", "Hikaye etkileşimi"]
         ]
       },
       {
-        id:"instagram", title:"Instagram", icon:"📸", desc:"Instagram sosyal medya hizmetleri", c1:"#e1306c", c2:"#5b21b6",
-        notice:"⚠️ Önemli: İşlem öncesi hesap herkese açık olmalıdır. Gizli hesaplarda işlem sağlıklı ilerlemeyebilir.",
-        products:[
-          ["1.000 Yabancı Takipçi","Telafisiz","120₺","Takipçi paketi"],
-          ["1.000 Yabancı Takipçi","365G ♻️","150₺","Uzun telafi"],
-          ["1.000 Türk Takipçi","30G ♻️","400₺","Türk takipçi"],
-          ["1.000 Yabancı Beğeni","365G ♻️","60₺","Beğeni paketi"],
-          ["1.000 Türk Beğeni","30G ♻️","120₺","Türk beğeni"],
-          ["1.000 İzlenme","Telafisiz","50₺","Reels/video"],
-          ["1.000 Fotoğraf Görüntülenmesi","Telafisiz","50₺","Görüntülenme"],
-          ["1.000 Rastgele Yabancı Yorum","Telafisiz","120₺","Yorum paketi"],
-          ["1.000 Yorum Beğenisi","365G ♻️","200₺","Yorum etkileşimi"],
-          ["1.000 Kaydetme","Telafisiz","60₺","Kaydetme paketi"],
-          ["1.000 Paylaşım","365G ♻️","50₺","Paylaşım paketi"],
-          ["1.000 Repost","Telafisiz","100₺","Repost paketi"],
-          ["1.000 Türk Kanal Üyesi","90G ♻️","120₺","Kanal üyesi"],
-          ["1.000 Canlı Yayın Beğeni","Telafisiz","120₺","Canlı yayın"]
+        id: "instagram",
+        title: "Instagram",
+        mark: "IG",
+        logo: logos.instagram,
+        desc: "Instagram sosyal medya hizmetleri",
+        colors: ["#e1306c", "#5b21b6"],
+        notice: "İşlem öncesi hesap herkese açık olmalıdır. Gizli hesaplarda işlem sağlıklı ilerlemeyebilir.",
+        products: [
+          ["1.000 Yabancı Takipçi", "Telafisiz", "120₺", "Takipçi paketi"],
+          ["1.000 Yabancı Takipçi", "365G Telafi", "150₺", "Uzun telafi"],
+          ["1.000 Türk Takipçi", "30G Telafi", "400₺", "Türk takipçi"],
+          ["1.000 Yabancı Beğeni", "365G Telafi", "60₺", "Beğeni paketi"],
+          ["1.000 Türk Beğeni", "30G Telafi", "120₺", "Türk beğeni"],
+          ["1.000 İzlenme", "Telafisiz", "50₺", "Reels/video"],
+          ["1.000 Fotoğraf Görüntülenmesi", "Telafisiz", "50₺", "Görüntülenme"],
+          ["1.000 Rastgele Yabancı Yorum", "Telafisiz", "120₺", "Yorum paketi"],
+          ["1.000 Yorum Beğenisi", "365G Telafi", "200₺", "Yorum etkileşimi"],
+          ["1.000 Kaydetme", "Telafisiz", "60₺", "Kaydetme paketi"],
+          ["1.000 Paylaşım", "365G Telafi", "50₺", "Paylaşım paketi"],
+          ["1.000 Repost", "Telafisiz", "100₺", "Repost paketi"],
+          ["1.000 Türk Kanal Üyesi", "90G Telafi", "120₺", "Kanal üyesi"],
+          ["1.000 Canlı Yayın Beğeni", "Telafisiz", "120₺", "Canlı yayın"]
         ]
       }
     ];
 
-    const main = document.querySelector('main');
+    const categoryList = document.querySelector("#categoryList");
+    const productSections = document.querySelector("#productSections");
+    const emptyState = document.querySelector("#emptyState");
+    const searchInput = document.querySelector("#searchInput");
 
-    function productCard(section, product){
+    let activeCategory = "all";
+
+    const normalize = (value) => value.toLocaleLowerCase("tr-TR").trim();
+
+    const productMatchesSearch = (product, query) => {
+      if (!query) return true;
+      return normalize(product.join(" ")).includes(query);
+    };
+
+    const createCategoryButton = ({ id, title }) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "category-btn";
+      button.dataset.filter = id;
+      button.textContent = title;
+      button.setAttribute("aria-pressed", id === "all" ? "true" : "false");
+      if (id === "all") button.classList.add("is-active");
+      return button;
+    };
+
+    const renderCategories = () => {
+      const categories = [{ id: "all", title: "Tümü" }, ...sections.map(({ id, title }) => ({ id, title }))];
+      categoryList.innerHTML = "";
+      categories.map(createCategoryButton).forEach((button) => categoryList.append(button));
+    };
+
+    const productCard = (section, product) => {
       const [name, tag, price, detail] = product;
-      return `
-        <article class="product" data-cat="${section.id}" style="--c1:${section.c1};--c2:${section.c2}">
-          <div class="photo">
-            <div class="emoji">${section.icon}</div>
-            <div class="brand-word">${section.title}</div>
-          </div>
-          <div class="body">
-            <div class="tag">${tag}</div>
-            <div class="name">${name}</div>
-            <div class="detail">${detail}</div>
-            <div class="bottom">
-              <div class="price">${price}</div>
-              <a class="buy" href="${orderLink}" target="_blank">Satın Al</a>
-            </div>
-          </div>
-        </article>`;
-    }
+      const article = document.createElement("article");
+      article.className = "product";
+      article.dataset.search = normalize(product.join(" "));
+      article.style.setProperty("--c1", section.colors[0]);
+      article.style.setProperty("--c2", section.colors[1]);
 
-    function sectionBlock(section){
-      return `
-        <section class="section" id="${section.id}" data-section="${section.id}">
-          <div class="section-head">
-            <div class="section-icon">${section.icon}</div>
-            <div>
-              <div class="section-title">${section.title}</div>
-              <div class="section-desc">${section.desc}</div>
-            </div>
-            <div class="line"></div>
-            <div class="count">${section.products.length} Ürün</div>
+      article.innerHTML = `
+        <div class="product-media" aria-hidden="true">
+          <div class="product-logo">${section.logo}</div>
+          <div class="product-platform">${section.title}</div>
+        </div>
+        <div class="product-body">
+          <div class="tag">${tag}</div>
+          <h3 class="product-name">${name}</h3>
+          <p class="product-detail">${detail}</p>
+          <div class="product-bottom">
+            <div class="price">${price}</div>
+            <a class="buy" href="${ORDER_LINK}" target="_blank" rel="noopener noreferrer" aria-label="${name} sipariş ver">Satın Al</a>
           </div>
-          <div class="grid">
-            ${section.products.map(p => productCard(section,p)).join('')}
+        </div>
+      `;
+
+      return article;
+    };
+
+    const sectionBlock = (section) => {
+      const sectionEl = document.createElement("section");
+      sectionEl.className = "section";
+      sectionEl.id = section.id;
+      sectionEl.dataset.section = section.id;
+      sectionEl.style.setProperty("--c1", section.colors[0]);
+      sectionEl.style.setProperty("--c2", section.colors[1]);
+
+      sectionEl.innerHTML = `
+        <div class="section-head">
+          <div class="section-icon" aria-hidden="true">${section.logo}</div>
+          <div>
+            <h2 class="section-title">${section.title}</h2>
+            <p class="section-desc">${section.desc}</p>
           </div>
-          ${section.notice ? `<div class="notice">${section.notice}</div>` : ''}
-        </section>`;
-    }
+          <div class="section-count">${section.products.length} Ürün</div>
+        </div>
+        <div class="grid"></div>
+        ${section.notice ? `<div class="notice">${section.notice}</div>` : ""}
+      `;
 
-    main.innerHTML = sections.map(sectionBlock).join('');
+      const grid = sectionEl.querySelector(".grid");
+      section.products.forEach((product) => grid.append(productCard(section, product)));
+      return sectionEl;
+    };
 
-    document.querySelectorAll('.cat').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        document.querySelectorAll('.cat').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('[data-section]').forEach(sec=>{
-          sec.style.display = (filter === 'all' || sec.dataset.section === filter) ? 'block' : 'none';
+    const renderProducts = () => {
+      productSections.innerHTML = "";
+      sections.forEach((section) => productSections.append(sectionBlock(section)));
+    };
+
+    const applyFilters = () => {
+      const query = normalize(searchInput.value);
+      let visibleProductCount = 0;
+
+      document.querySelectorAll("[data-section]").forEach((sectionEl) => {
+        const sectionId = sectionEl.dataset.section;
+        const isCategoryMatch = activeCategory === "all" || sectionId === activeCategory;
+        let sectionVisibleCount = 0;
+
+        sectionEl.querySelectorAll(".product").forEach((card) => {
+          const isSearchMatch = card.dataset.search.includes(query);
+          const isVisible = isCategoryMatch && isSearchMatch;
+          card.hidden = !isVisible;
+          if (isVisible) sectionVisibleCount += 1;
         });
-        document.getElementById('products').scrollIntoView({behavior:'smooth',block:'start'});
+
+        sectionEl.classList.toggle("is-hidden", sectionVisibleCount === 0);
+        visibleProductCount += sectionVisibleCount;
       });
+
+      emptyState.classList.toggle("is-visible", visibleProductCount === 0);
+    };
+
+    renderCategories();
+    renderProducts();
+    applyFilters();
+
+    document.querySelectorAll(".js-order-link").forEach((link) => {
+      link.href = ORDER_LINK;
     });
+
+    categoryList.addEventListener("click", (event) => {
+      const button = event.target.closest(".category-btn");
+      if (!button) return;
+
+      activeCategory = button.dataset.filter;
+      document.querySelectorAll(".category-btn").forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
+
+      applyFilters();
+      document.querySelector("#products").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    searchInput.addEventListener("input", applyFilters);
   </script>
 </body>
 </html>
