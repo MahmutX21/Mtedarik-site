@@ -191,6 +191,10 @@
       box-shadow: 0 14px 34px rgba(18, 191, 243, .22);
     }
 
+    .admin-trigger {
+      background: transparent;
+    }
+
     .hero {
       position: relative;
       padding: 84px 0 56px;
@@ -340,13 +344,26 @@
       overflow: visible;
     }
 
+    .platform-mark svg.wordmark-logo,
+    .section-icon svg.wordmark-logo,
+    .product-logo svg.wordmark-logo {
+      width: 42px;
+      height: 42px;
+    }
+
+    .platform-mark svg.chatgpt-logo,
+    .section-icon svg.chatgpt-logo,
+    .product-logo svg.chatgpt-logo {
+      width: 36px;
+      height: 36px;
+    }
+
     .platform-mark .text-logo,
     .section-icon .text-logo,
     .product-logo .text-logo {
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 18px;
-      letter-spacing: 1px;
-      font-weight: 400;
+      font-family: "Inter", Arial, sans-serif;
+      font-weight: 900;
+      letter-spacing: 0;
     }
 
     .platform-name {
@@ -733,6 +750,368 @@
       display: block;
     }
 
+    .listings {
+      padding: 0 0 76px;
+      scroll-margin-top: 154px;
+    }
+
+    .listings-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .listings-kicker {
+      width: max-content;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      color: #a8f1ff;
+      background: rgba(18, 191, 243, .10);
+      border: 1px solid rgba(18, 191, 243, .22);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .listings-title {
+      margin-top: 12px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(42px, 6vw, 58px);
+      line-height: .95;
+      letter-spacing: 3px;
+    }
+
+    .listings-desc {
+      max-width: 620px;
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .admin-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      color: var(--soft);
+      background:
+        linear-gradient(135deg, rgba(34, 197, 94, .12), transparent 40%),
+        rgba(255, 255, 255, .045);
+      border: 1px solid rgba(34, 197, 94, .24);
+    }
+
+    .admin-panel[hidden],
+    .admin-only[hidden] {
+      display: none;
+    }
+
+    .admin-panel strong {
+      display: block;
+      color: #dcfce7;
+      font-size: 14px;
+    }
+
+    .admin-panel span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .admin-panel-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .listing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .listing-card {
+      min-height: 218px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px;
+      border-radius: 20px;
+      color: var(--text);
+      text-align: left;
+      background:
+        linear-gradient(145deg, rgba(18, 191, 243, .10), transparent 42%),
+        linear-gradient(180deg, rgba(13, 27, 47, .94), rgba(7, 17, 31, .98));
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .listing-card.is-editable {
+      cursor: pointer;
+    }
+
+    .listing-card.is-editable:hover {
+      transform: translateY(-4px);
+      border-color: rgba(18, 191, 243, .45);
+      box-shadow: 0 24px 66px rgba(18, 191, 243, .10);
+    }
+
+    .listing-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .listing-status,
+    .listing-edit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .listing-status {
+      padding: 0 10px;
+      color: #e6fbff;
+      background: rgba(18, 191, 243, .10);
+      border: 1px solid rgba(18, 191, 243, .20);
+    }
+
+    .listing-edit {
+      width: 32px;
+      color: #a8f1ff;
+      background: rgba(255, 255, 255, .055);
+      border: 1px solid rgba(142, 163, 196, .18);
+    }
+
+    .listing-edit[hidden] {
+      display: none;
+    }
+
+    .listing-card h3 {
+      margin-top: 18px;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .listing-card p {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .listing-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(142, 163, 196, .14);
+    }
+
+    .listing-category {
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .listing-price {
+      color: #89eaff;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .listing-empty {
+      display: none;
+      padding: 22px;
+      border-radius: 18px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid rgba(142, 163, 196, .18);
+      text-align: center;
+    }
+
+    .listing-empty.is-visible {
+      display: block;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .modal[hidden] {
+      display: none;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(2, 6, 23, .74);
+      backdrop-filter: blur(14px);
+    }
+
+    .modal-panel {
+      width: min(720px, 100%);
+      max-height: min(760px, calc(100vh - 40px));
+      overflow: auto;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(13, 27, 47, .98), rgba(7, 17, 31, .98));
+      border: 1px solid rgba(18, 191, 243, .24);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-panel.compact {
+      width: min(460px, 100%);
+    }
+
+    .modal-head {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 22px;
+      background: rgba(7, 17, 31, .96);
+      border-bottom: 1px solid rgba(142, 163, 196, .14);
+    }
+
+    .modal-head h2 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: 3px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      color: #dff9ff;
+      background: rgba(255, 255, 255, .055);
+      border: 1px solid rgba(142, 163, 196, .18);
+    }
+
+    .icon-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .listing-form {
+      padding: 22px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .4px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border-radius: 14px;
+      color: var(--text);
+      background: rgba(255, 255, 255, .055);
+      border: 1px solid rgba(142, 163, 196, .20);
+      outline: 0;
+    }
+
+    .field input,
+    .field select {
+      height: 44px;
+      padding: 0 13px;
+    }
+
+    .field textarea {
+      min-height: 116px;
+      resize: vertical;
+      padding: 13px;
+      line-height: 1.55;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #7d8faa;
+    }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(142, 163, 196, .14);
+    }
+
+    .form-actions .danger {
+      margin-right: auto;
+      color: #fecaca;
+      background: rgba(239, 68, 68, .10);
+      border-color: rgba(239, 68, 68, .26);
+    }
+
+    .form-actions .danger[hidden] {
+      display: none;
+    }
+
+    .form-error {
+      margin-top: 12px;
+      color: #fecaca;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .form-error[hidden] {
+      display: none;
+    }
+
     .contact-band {
       padding: 64px 0;
       border-top: 1px solid rgba(18, 191, 243, .14);
@@ -884,6 +1263,11 @@
       .contact-list {
         grid-template-columns: 1fr;
       }
+
+      .listings-head {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
     }
 
     @media (max-width: 720px) {
@@ -909,7 +1293,7 @@
         font-size: 10px;
       }
 
-      .nav-link:not(.primary) {
+      .nav-link:not(.primary):not(.admin-trigger) {
         display: none;
       }
 
@@ -954,6 +1338,23 @@
       .metric:nth-child(4) {
         border-bottom: 0;
       }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .form-actions .danger {
+        margin-right: 0;
+      }
+
+      .form-actions .btn {
+        width: 100%;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -982,7 +1383,9 @@
 
       <nav class="nav" aria-label="Ana menü">
         <a class="nav-link" href="#products">Ürünler</a>
+        <a class="nav-link" href="#listings">İlanlar</a>
         <a class="nav-link" href="#contact">İletişim</a>
+        <button id="adminOpenBtn" class="nav-link admin-trigger" type="button">Admin</button>
         <a class="nav-link primary js-order-link" href="https://www.instagram.com/mahmut_x_21_/" target="_blank" rel="noopener noreferrer">Sipariş Ver</a>
       </nav>
     </div>
@@ -1007,16 +1410,28 @@
             </svg>
             Ürünleri İncele
           </a>
+          <a class="btn" href="#listings">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+            İlan Ver
+          </a>
         </div>
       </div>
 
       <div class="platform-board" aria-label="Öne çıkan platformlar">
         <div class="platform-tile" style="--tile-a:#10a37f;--tile-b:#053b31">
           <div class="platform-mark" aria-hidden="true">
-            <svg viewBox="0 0 64 64" focusable="false">
-              <path d="M32 8 47 16.7v17.4L32 43 17 34.1V16.7L32 8Z" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linejoin="round"></path>
-              <path d="M17.5 28.5 32 20l14.5 8.5M32 20v23" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M22 48.4 32 54l10-5.6" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            <svg class="chatgpt-logo" viewBox="0 0 64 64" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M32 8.5c5.9 0 10.7 4.1 11.8 9.6l-11.6 6.7-11.9-6.9C21.5 12.6 26.2 8.5 32 8.5Z"></path>
+                <path d="M50.6 18.9c2.9 5.1 1.5 11.6-3.1 14.9l-11.8-6.9v-13.7c5.2-1.6 12 .8 14.9 5.7Z"></path>
+                <path d="M50.4 44.7c-2.9 5-9.1 7-14.4 5l.1-13.7 11.8-6.8c4.3 3.5 5.4 10.5 2.5 15.5Z"></path>
+                <path d="M32 55.5c-5.9 0-10.7-4.1-11.8-9.6l11.6-6.7 11.9 6.9c-1.2 5.3-5.9 9.4-11.7 9.4Z"></path>
+                <path d="M13.4 45.1c-2.9-5.1-1.5-11.6 3.1-14.9l11.8 6.9v13.7c-5.2 1.6-12-.8-14.9-5.7Z"></path>
+                <path d="M13.6 19.3c2.9-5 9.1-7 14.4-5l-.1 13.7-11.8 6.8c-4.3-3.5-5.4-10.5-2.5-15.5Z"></path>
+                <path d="M24.2 32 32 27.5l7.8 4.5v9L32 45.5 24.2 41v-9Z"></path>
+              </g>
             </svg>
           </div>
           <div>
@@ -1092,6 +1507,37 @@
     <div id="emptyState" class="empty-state">Aramanızla eşleşen ürün bulunamadı.</div>
   </main>
 
+  <section id="listings" class="container listings" aria-labelledby="listingsTitle">
+    <div class="listings-head">
+      <div>
+        <div class="listings-kicker">İlan Panosu</div>
+        <h2 id="listingsTitle" class="listings-title">İlanlar</h2>
+        <p class="listings-desc">Kampanya, stok duyurusu veya özel tekliflerini burada gösterebilirsin.</p>
+      </div>
+
+      <button id="newListingBtn" class="btn primary admin-only" type="button" hidden>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        İlan Oluştur
+      </button>
+    </div>
+
+    <div id="adminPanel" class="admin-panel" hidden>
+      <div>
+        <strong>Admin paneli açık</strong>
+        <span>İlan ekleyebilir, mevcut ilanlara basarak düzenleyebilir veya silebilirsin.</span>
+      </div>
+      <div class="admin-panel-actions">
+        <button id="adminNewListingBtn" class="btn primary" type="button">Yeni İlan</button>
+        <button id="adminLogoutBtn" class="btn" type="button">Çıkış Yap</button>
+      </div>
+    </div>
+
+    <div id="listingGrid" class="listing-grid" aria-live="polite"></div>
+    <div id="listingEmpty" class="listing-empty">Henüz ilan eklenmedi.</div>
+  </section>
+
   <section id="contact" class="contact-band">
     <div class="container contact-grid contact">
       <div>
@@ -1118,6 +1564,92 @@
     </div>
   </section>
 
+  <div id="adminModal" class="modal" hidden>
+    <div class="modal-panel compact" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+      <div class="modal-head">
+        <h2 id="adminModalTitle">Admin Girişi</h2>
+        <button id="closeAdminModal" class="icon-btn" type="button" aria-label="Kapat">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+
+      <form id="adminLoginForm" class="listing-form">
+        <label class="field">
+          Admin Şifresi
+          <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Şifre" required>
+        </label>
+        <p id="adminLoginError" class="form-error" hidden>Şifre hatalı. Tekrar dene.</p>
+
+        <div class="form-actions">
+          <button id="cancelAdminLoginBtn" class="btn" type="button">Vazgeç</button>
+          <button class="btn primary" type="submit">Giriş Yap</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="listingModal" class="modal" hidden>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="listingModalTitle">
+      <div class="modal-head">
+        <h2 id="listingModalTitle">İlan Oluştur</h2>
+        <button id="closeListingModal" class="icon-btn" type="button" aria-label="Kapat">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+
+      <form id="listingForm" class="listing-form">
+        <input id="listingId" type="hidden">
+
+        <div class="form-grid">
+          <label class="field full">
+            Başlık
+            <input id="listingTitle" type="text" maxlength="80" placeholder="Örn: Haftanın fırsatı" required>
+          </label>
+
+          <label class="field">
+            Kategori
+            <input id="listingCategory" type="text" maxlength="40" placeholder="Örn: Premium">
+          </label>
+
+          <label class="field">
+            Fiyat
+            <input id="listingPrice" type="text" maxlength="32" placeholder="Örn: 100₺">
+          </label>
+
+          <label class="field">
+            Durum
+            <select id="listingStatus">
+              <option>Aktif</option>
+              <option>Öne Çıkan</option>
+              <option>Yeni</option>
+              <option>Kapalı</option>
+            </select>
+          </label>
+
+          <label class="field">
+            Bağlantı
+            <input id="listingLink" type="url" placeholder="https://www.instagram.com/...">
+          </label>
+
+          <label class="field full">
+            Açıklama
+            <textarea id="listingDescription" maxlength="220" placeholder="İlan açıklamasını yaz..."></textarea>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button id="deleteListingBtn" class="btn danger" type="button" hidden>Sil</button>
+          <button id="cancelListingBtn" class="btn" type="button">Vazgeç</button>
+          <button class="btn primary" type="submit">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-brand">M <span>TEDARİK</span></div>
     <p>© 2026 M Tedarik. Tüm hakları saklıdır.</p>
@@ -1128,23 +1660,28 @@
 
     const logos = {
       chatgpt: `
-        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-          <path d="M32 8 47 16.7v17.4L32 43 17 34.1V16.7L32 8Z" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linejoin="round"></path>
-          <path d="M17.5 28.5 32 20l14.5 8.5M32 20v23" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M22 48.4 32 54l10-5.6" fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        <svg class="chatgpt-logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <g fill="none" stroke="currentColor" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 8.5c5.9 0 10.7 4.1 11.8 9.6l-11.6 6.7-11.9-6.9C21.5 12.6 26.2 8.5 32 8.5Z"></path>
+            <path d="M50.6 18.9c2.9 5.1 1.5 11.6-3.1 14.9l-11.8-6.9v-13.7c5.2-1.6 12 .8 14.9 5.7Z"></path>
+            <path d="M50.4 44.7c-2.9 5-9.1 7-14.4 5l.1-13.7 11.8-6.8c4.3 3.5 5.4 10.5 2.5 15.5Z"></path>
+            <path d="M32 55.5c-5.9 0-10.7-4.1-11.8-9.6l11.6-6.7 11.9 6.9c-1.2 5.3-5.9 9.4-11.7 9.4Z"></path>
+            <path d="M13.4 45.1c-2.9-5.1-1.5-11.6 3.1-14.9l11.8 6.9v13.7c-5.2 1.6-12-.8-14.9-5.7Z"></path>
+            <path d="M13.6 19.3c2.9-5 9.1-7 14.4-5l-.1 13.7-11.8 6.8c-4.3-3.5-5.4-10.5-2.5-15.5Z"></path>
+            <path d="M24.2 32 32 27.5l7.8 4.5v9L32 45.5 24.2 41v-9Z"></path>
+          </g>
         </svg>
       `,
       exxen: `
-        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-          <rect x="10" y="14" width="44" height="36" rx="10" fill="none" stroke="currentColor" stroke-width="4"></rect>
-          <text class="text-logo" x="32" y="38" text-anchor="middle" fill="currentColor">EX</text>
+        <svg class="wordmark-logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect x="5" y="16" width="54" height="32" rx="9" fill="rgba(0,0,0,.18)" stroke="currentColor" stroke-width="3.2"></rect>
+          <text class="text-logo" x="32" y="38" text-anchor="middle" font-size="12.5" fill="currentColor">EXXEN</text>
         </svg>
       `,
       blutv: `
-        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-          <rect x="9" y="16" width="46" height="32" rx="9" fill="none" stroke="currentColor" stroke-width="4"></rect>
-          <path d="M24 48h16M29 54h6" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
-          <text class="text-logo" x="32" y="37" text-anchor="middle" fill="currentColor">TV</text>
+        <svg class="wordmark-logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <rect x="5" y="16" width="54" height="32" rx="9" fill="rgba(0,0,0,.18)" stroke="currentColor" stroke-width="3.2"></rect>
+          <text class="text-logo" x="32" y="38" text-anchor="middle" font-size="13.5" fill="currentColor">BluTV</text>
         </svg>
       `,
       netflix: `
@@ -1160,7 +1697,8 @@
       `,
       capcut: `
         <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-          <path d="M18 17h28L18 47h28M18 47l28-30" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M15 18h34L15 46h34" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M49 18 15 46M15 18l34 28" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       `,
       tiktok: `
@@ -1316,8 +1854,62 @@
     const productSections = document.querySelector("#productSections");
     const emptyState = document.querySelector("#emptyState");
     const searchInput = document.querySelector("#searchInput");
+    const ADMIN_PASSWORD = "MTedarik21.";
+    const ADMIN_SESSION_KEY = "m-tedarik-admin";
+    const LISTING_STORAGE_KEY = "m-tedarik-listings";
+    const listingGrid = document.querySelector("#listingGrid");
+    const listingEmpty = document.querySelector("#listingEmpty");
+    const newListingBtn = document.querySelector("#newListingBtn");
+    const adminOpenBtn = document.querySelector("#adminOpenBtn");
+    const adminPanel = document.querySelector("#adminPanel");
+    const adminNewListingBtn = document.querySelector("#adminNewListingBtn");
+    const adminLogoutBtn = document.querySelector("#adminLogoutBtn");
+    const adminModal = document.querySelector("#adminModal");
+    const adminLoginForm = document.querySelector("#adminLoginForm");
+    const adminPassword = document.querySelector("#adminPassword");
+    const adminLoginError = document.querySelector("#adminLoginError");
+    const closeAdminModal = document.querySelector("#closeAdminModal");
+    const cancelAdminLoginBtn = document.querySelector("#cancelAdminLoginBtn");
+    const listingModal = document.querySelector("#listingModal");
+    const listingModalTitle = document.querySelector("#listingModalTitle");
+    const listingForm = document.querySelector("#listingForm");
+    const closeListingModal = document.querySelector("#closeListingModal");
+    const cancelListingBtn = document.querySelector("#cancelListingBtn");
+    const deleteListingBtn = document.querySelector("#deleteListingBtn");
+    const listingFields = {
+      id: document.querySelector("#listingId"),
+      title: document.querySelector("#listingTitle"),
+      category: document.querySelector("#listingCategory"),
+      price: document.querySelector("#listingPrice"),
+      status: document.querySelector("#listingStatus"),
+      link: document.querySelector("#listingLink"),
+      description: document.querySelector("#listingDescription")
+    };
 
     let activeCategory = "all";
+    let listings = [];
+    let isAdmin = sessionStorage.getItem(ADMIN_SESSION_KEY) === "true";
+
+    const defaultListings = [
+      {
+        id: "sample-featured",
+        title: "Öne Çıkan İlan",
+        category: "Premium",
+        price: "Fiyat için DM",
+        status: "Öne Çıkan",
+        link: ORDER_LINK,
+        description: "Buraya kampanya, stok duyurusu veya özel teklif açıklaması yazabilirsin."
+      },
+      {
+        id: "sample-fast-delivery",
+        title: "Hızlı Teslimat Duyurusu",
+        category: "Dijital Ürünler",
+        price: "7/24",
+        status: "Aktif",
+        link: ORDER_LINK,
+        description: "Yeni ilanlarını buradan düzenleyip müşterilere gösterebilirsin."
+      }
+    ];
 
     const normalize = (value) => value.toLocaleLowerCase("tr-TR").trim();
 
@@ -1401,6 +1993,155 @@
       sections.forEach((section) => productSections.append(sectionBlock(section)));
     };
 
+    const createListingId = () => {
+      if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+      return `listing-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    };
+
+    const cloneDefaultListings = () => defaultListings.map((listing) => ({ ...listing }));
+
+    const loadListings = () => {
+      try {
+        const savedListings = localStorage.getItem(LISTING_STORAGE_KEY);
+        if (!savedListings) return cloneDefaultListings();
+        const parsedListings = JSON.parse(savedListings);
+        return Array.isArray(parsedListings) ? parsedListings : cloneDefaultListings();
+      } catch (error) {
+        return cloneDefaultListings();
+      }
+    };
+
+    const saveListings = () => {
+      try {
+        localStorage.setItem(LISTING_STORAGE_KEY, JSON.stringify(listings));
+      } catch (error) {
+        console.warn("İlanlar kaydedilemedi.", error);
+      }
+    };
+
+    const updateAdminUi = () => {
+      adminPanel.hidden = !isAdmin;
+      newListingBtn.hidden = !isAdmin;
+      adminOpenBtn.textContent = isAdmin ? "Admin Açık" : "Admin";
+      adminOpenBtn.setAttribute("aria-pressed", String(isAdmin));
+      renderListings();
+    };
+
+    const openAdminLogin = () => {
+      if (isAdmin) {
+        document.querySelector("#listings").scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      adminLoginForm.reset();
+      adminLoginError.hidden = true;
+      adminModal.hidden = false;
+      adminModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      requestAnimationFrame(() => adminPassword.focus());
+    };
+
+    const closeAdminLogin = () => {
+      adminModal.hidden = true;
+      adminModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      adminLoginForm.reset();
+      adminLoginError.hidden = true;
+    };
+
+    const loginAdmin = () => {
+      isAdmin = true;
+      sessionStorage.setItem(ADMIN_SESSION_KEY, "true");
+      closeAdminLogin();
+      updateAdminUi();
+      document.querySelector("#listings").scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    const logoutAdmin = () => {
+      isAdmin = false;
+      sessionStorage.removeItem(ADMIN_SESSION_KEY);
+      updateAdminUi();
+    };
+
+    const createListingCard = (listing) => {
+      const card = document.createElement(isAdmin ? "button" : "article");
+      if (isAdmin) card.type = "button";
+      card.className = `listing-card${isAdmin ? " is-editable" : ""}`;
+      card.dataset.id = listing.id;
+      if (isAdmin) card.setAttribute("aria-label", `${listing.title} ilanını düzenle`);
+
+      card.innerHTML = `
+        <div>
+          <div class="listing-top">
+            <span class="listing-status"></span>
+            <span class="listing-edit" aria-hidden="true" ${isAdmin ? "" : "hidden"}>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="m16.5 4.5 3 3L8 19H5v-3L16.5 4.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </div>
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="listing-meta">
+          <span class="listing-category"></span>
+          <span class="listing-price"></span>
+        </div>
+      `;
+
+      card.querySelector(".listing-status").textContent = listing.status || "Aktif";
+      card.querySelector("h3").textContent = listing.title || "Başlıksız İlan";
+      card.querySelector("p").textContent = listing.description || "Detaylar Instagram üzerinden paylaşılır.";
+      card.querySelector(".listing-category").textContent = listing.category || "Genel";
+      card.querySelector(".listing-price").textContent = listing.price || "DM";
+
+      return card;
+    };
+
+    const renderListings = () => {
+      listingGrid.innerHTML = "";
+      listings.forEach((listing) => listingGrid.append(createListingCard(listing)));
+      listingEmpty.classList.toggle("is-visible", listings.length === 0);
+    };
+
+    const setListingFormValues = (listing) => {
+      listingFields.id.value = listing?.id || "";
+      listingFields.title.value = listing?.title || "";
+      listingFields.category.value = listing?.category || "";
+      listingFields.price.value = listing?.price || "";
+      listingFields.status.value = listing?.status || "Aktif";
+      listingFields.link.value = listing?.link || ORDER_LINK;
+      listingFields.description.value = listing?.description || "";
+    };
+
+    const openListingEditor = (listing = null) => {
+      if (!isAdmin) return;
+      setListingFormValues(listing);
+      listingModalTitle.textContent = listing ? "İlanı Düzenle" : "İlan Oluştur";
+      deleteListingBtn.hidden = !listing;
+      listingModal.hidden = false;
+      listingModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      requestAnimationFrame(() => listingFields.title.focus());
+    };
+
+    const closeListingEditor = () => {
+      listingModal.hidden = true;
+      listingModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      listingForm.reset();
+    };
+
+    const getListingFormData = () => ({
+      id: listingFields.id.value || createListingId(),
+      title: listingFields.title.value.trim(),
+      category: listingFields.category.value.trim() || "Genel",
+      price: listingFields.price.value.trim() || "DM",
+      status: listingFields.status.value,
+      link: listingFields.link.value.trim() || ORDER_LINK,
+      description: listingFields.description.value.trim() || "Detaylar Instagram üzerinden paylaşılır."
+    });
+
     const applyFilters = () => {
       const query = normalize(searchInput.value);
       let visibleProductCount = 0;
@@ -1427,6 +2168,8 @@
     renderCategories();
     renderProducts();
     applyFilters();
+    listings = loadListings();
+    updateAdminUi();
 
     document.querySelectorAll(".js-order-link").forEach((link) => {
       link.href = ORDER_LINK;
@@ -1448,6 +2191,78 @@
     });
 
     searchInput.addEventListener("input", applyFilters);
+
+    adminOpenBtn.addEventListener("click", openAdminLogin);
+    closeAdminModal.addEventListener("click", closeAdminLogin);
+    cancelAdminLoginBtn.addEventListener("click", closeAdminLogin);
+    adminNewListingBtn.addEventListener("click", () => openListingEditor());
+    newListingBtn.addEventListener("click", () => openListingEditor());
+    adminLogoutBtn.addEventListener("click", logoutAdmin);
+
+    adminLoginForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (adminPassword.value === ADMIN_PASSWORD) {
+        loginAdmin();
+        return;
+      }
+
+      adminLoginError.hidden = false;
+      adminPassword.select();
+    });
+
+    listingGrid.addEventListener("click", (event) => {
+      if (!isAdmin) return;
+      const card = event.target.closest(".listing-card");
+      if (!card) return;
+      const listing = listings.find((item) => item.id === card.dataset.id);
+      if (listing) openListingEditor(listing);
+    });
+
+    listingForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!isAdmin) return;
+      const formData = getListingFormData();
+      const existingIndex = listings.findIndex((listing) => listing.id === formData.id);
+
+      if (existingIndex >= 0) {
+        listings[existingIndex] = formData;
+      } else {
+        listings.unshift(formData);
+      }
+
+      saveListings();
+      renderListings();
+      closeListingEditor();
+    });
+
+    deleteListingBtn.addEventListener("click", () => {
+      if (!isAdmin) return;
+      const listingId = listingFields.id.value;
+      if (!listingId) return;
+      const shouldDelete = confirm("Bu ilan silinsin mi?");
+      if (!shouldDelete) return;
+
+      listings = listings.filter((listing) => listing.id !== listingId);
+      saveListings();
+      renderListings();
+      closeListingEditor();
+    });
+
+    closeListingModal.addEventListener("click", closeListingEditor);
+    cancelListingBtn.addEventListener("click", closeListingEditor);
+
+    adminModal.addEventListener("click", (event) => {
+      if (event.target === adminModal) closeAdminLogin();
+    });
+
+    listingModal.addEventListener("click", (event) => {
+      if (event.target === listingModal) closeListingEditor();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !listingModal.hidden) closeListingEditor();
+      if (event.key === "Escape" && !adminModal.hidden) closeAdminLogin();
+    });
   </script>
 </body>
 </html>
