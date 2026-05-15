@@ -203,15 +203,15 @@
 
     .hero {
       position: relative;
-      padding: 84px 0 56px;
+      padding: 42px 0 32px;
       overflow: hidden;
     }
 
     .hero-grid {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(340px, .82fr);
-      gap: 48px;
+      grid-template-columns: minmax(0, 820px);
+      gap: 20px;
       align-items: center;
     }
 
@@ -221,8 +221,8 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      margin-bottom: 22px;
-      padding: 8px 14px;
+      margin-bottom: 16px;
+      padding: 7px 13px;
       border-radius: 999px;
       color: #94f3ff;
       background: rgba(18, 191, 243, .10);
@@ -245,24 +245,24 @@
     h1 {
       max-width: 780px;
       font-family: "Bebas Neue", sans-serif;
-      font-size: clamp(58px, 9vw, 112px);
+      font-size: clamp(52px, 7vw, 92px);
       line-height: .88;
-      letter-spacing: 6px;
+      letter-spacing: 5px;
     }
 
     .hero-copy {
       max-width: 620px;
-      margin-top: 22px;
+      margin-top: 16px;
       color: #b6c7e2;
-      font-size: 17px;
-      line-height: 1.75;
+      font-size: 16px;
+      line-height: 1.65;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 30px;
+      margin-top: 22px;
     }
 
     .btn {
@@ -292,56 +292,6 @@
       flex: 0 0 auto;
     }
 
-    .platform-board {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .platform-tile {
-      min-height: 148px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      position: relative;
-      padding: 18px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, .12);
-      background: linear-gradient(135deg, var(--tile-a), var(--tile-b));
-      box-shadow: var(--shadow);
-    }
-
-    .platform-tile::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(140deg, rgba(255, 255, 255, .22), transparent 42%),
-        radial-gradient(circle at 86% 16%, rgba(255, 255, 255, .20), transparent 26%);
-      opacity: .75;
-    }
-
-    .platform-mark,
-    .platform-name,
-    .platform-desc {
-      position: relative;
-      z-index: 1;
-    }
-
-    .platform-mark {
-      width: 50px;
-      height: 50px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      color: #fff;
-      background: rgba(0, 0, 0, .22);
-      border: 1px solid rgba(255, 255, 255, .15);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16);
-    }
-
-    .platform-mark svg,
     .section-icon svg,
     .product-logo svg {
       width: 30px;
@@ -350,21 +300,18 @@
       overflow: visible;
     }
 
-    .platform-mark svg.wordmark-logo,
     .section-icon svg.wordmark-logo,
     .product-logo svg.wordmark-logo {
       width: 42px;
       height: 42px;
     }
 
-    .platform-mark svg.chatgpt-logo,
     .section-icon svg.chatgpt-logo,
     .product-logo svg.chatgpt-logo {
       width: 36px;
       height: 36px;
     }
 
-    .platform-mark .text-logo,
     .section-icon .text-logo,
     .product-logo .text-logo {
       font-family: "Inter", Arial, sans-serif;
@@ -372,7 +319,6 @@
       letter-spacing: 0;
     }
 
-    .platform-mark img,
     .section-icon img,
     .product-logo img,
     .category-card-logo img {
@@ -383,7 +329,6 @@
       border-radius: 12px;
     }
 
-    .platform-mark img[src*="chatgpt"],
     .section-icon img[src*="chatgpt"],
     .product-logo img[src*="chatgpt"],
     .category-card-logo img[src*="chatgpt"] {
@@ -397,19 +342,6 @@
       height: 76%;
     }
 
-    .platform-name {
-      margin-top: 22px;
-      font-weight: 900;
-      font-size: 15px;
-    }
-
-    .platform-desc {
-      margin-top: 5px;
-      color: rgba(255, 255, 255, .72);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
     .metrics {
       border-block: 1px solid rgba(18, 191, 243, .15);
       background: rgba(7, 17, 31, .72);
@@ -421,10 +353,10 @@
     }
 
     .metric {
-      min-height: 102px;
+      min-height: 82px;
       display: grid;
       place-items: center;
-      padding: 20px 16px;
+      padding: 16px 14px;
       text-align: center;
       border-right: 1px solid rgba(18, 191, 243, .12);
     }
@@ -437,14 +369,14 @@
       display: block;
       color: #8eeaff;
       font-family: "Bebas Neue", sans-serif;
-      font-size: 36px;
+      font-size: 32px;
       line-height: 1;
       letter-spacing: 2px;
     }
 
     .metric span {
       display: block;
-      margin-top: 8px;
+      margin-top: 6px;
       color: var(--muted);
       font-size: 12px;
       font-weight: 900;
@@ -1402,10 +1334,6 @@
         grid-template-columns: 1fr;
       }
 
-      .platform-board {
-        max-width: 620px;
-      }
-
       .metrics-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -1462,7 +1390,7 @@
       }
 
       .hero {
-        padding: 54px 0 42px;
+        padding: 34px 0 26px;
       }
 
       h1 {
@@ -1473,7 +1401,6 @@
         font-size: 15px;
       }
 
-      .platform-board,
       .grid {
         grid-template-columns: 1fr;
       }
@@ -1619,52 +1546,14 @@
         </div>
       </div>
 
-      <div class="platform-board" aria-label="Öne çıkan platformlar">
-        <div class="platform-tile" style="--tile-a:#1f2937;--tile-b:#0f766e">
-          <div class="platform-mark" aria-hidden="true">
-            <img src="assets/logos/chatgpt.png" alt="">
-          </div>
-          <div>
-            <div class="platform-name">ChatGPT</div>
-            <div class="platform-desc">Premium hesap seçenekleri</div>
-          </div>
-        </div>
-        <div class="platform-tile" style="--tile-a:#e50914;--tile-b:#3a0608">
-          <div class="platform-mark" aria-hidden="true">
-            <img src="assets/logos/netflix.png" alt="">
-          </div>
-          <div>
-            <div class="platform-name">Netflix</div>
-            <div class="platform-desc">Profil ve kişisel hesap</div>
-          </div>
-        </div>
-        <div class="platform-tile" style="--tile-a:#1db954;--tile-b:#062513">
-          <div class="platform-mark" aria-hidden="true">
-            <img src="assets/logos/spotify.png" alt="">
-          </div>
-          <div>
-            <div class="platform-name">Spotify</div>
-            <div class="platform-desc">Premium müzik paketleri</div>
-          </div>
-        </div>
-        <div class="platform-tile" style="--tile-a:#e1306c;--tile-b:#5b21b6">
-          <div class="platform-mark" aria-hidden="true">
-            <img src="assets/logos/instagram.png" alt="">
-          </div>
-          <div>
-            <div class="platform-name">Sosyal Medya</div>
-            <div class="platform-desc">Etkileşim hizmetleri</div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
   <section class="metrics" aria-label="M Tedarik özet bilgiler">
     <div class="container metrics-grid">
-      <div class="metric"><div><strong>50+</strong><span>Ürün Paketi</span></div></div>
+      <div class="metric"><div><strong>93+</strong><span>Ürün Paketi</span></div></div>
       <div class="metric"><div><strong>7/24</strong><span>Destek</span></div></div>
-      <div class="metric"><div><strong>12</strong><span>Platform</span></div></div>
+      <div class="metric"><div><strong>17</strong><span>Platform</span></div></div>
       <div class="metric"><div><strong>%100</strong><span>Hızlı Teslim</span></div></div>
     </div>
   </section>
@@ -1862,8 +1751,13 @@
       gemini: `<img src="assets/logos/gemini.png" alt="">`,
       canva: `<img src="assets/logos/canva.png" alt="">`,
       spotify: `<img src="assets/logos/spotify.png" alt="">`,
+      steam: `<img src="assets/logos/steam.png" alt="">`,
       capcut: `<img src="assets/logos/capcut.png" alt="">`,
       minecraft: `<img src="assets/logos/minecraft.png" alt="">`,
+      xbox: `<img src="assets/logos/xbox.png" alt="">`,
+      windows: `<img src="assets/logos/windows.png" alt="">`,
+      duolingo: `<img src="assets/logos/duolingo.png" alt="">`,
+      brawlStars: `<img src="assets/logos/Brawl-Stars.png" alt="">`,
       tiktok: `<img src="assets/logos/tiktok.png" alt="">`,
       instagram: `<img src="assets/logos/instagram.png" alt="">`
     };
@@ -1978,6 +1872,37 @@
         ]
       },
       {
+        id: "steam",
+        title: "Steam",
+        mark: "ST",
+        logo: logos.steam,
+        desc: "Random, oyunlu ve eski kurulumlu Steam hesapları",
+        colors: ["#1b2838", "#66c0f4"],
+        products: [
+          ["Random Hesap", "Random Hesap", "20₺", "Steam hesabı"],
+          ["İstediğiniz 1 Oyun", "1 Oyun", "50₺", "Seçtiğiniz oyun"],
+          ["İstediğiniz 2 Oyun", "2 Oyun", "70₺", "Seçtiğiniz oyunlar"],
+          ["İstediğiniz 3 Oyun", "3 Oyun", "100₺", "Seçtiğiniz oyunlar"],
+          ["İstediğiniz 4 Oyun", "4 Oyun", "120₺", "Seçtiğiniz oyunlar"],
+          ["İstediğiniz 5 Oyun", "5 Oyun", "150₺", "Seçtiğiniz oyunlar"],
+          ["Popüler Oyunlu Hesap", "Mail Değişen", "100₺", "Popüler oyunlu Steam hesabı"],
+          ["5$ Yatırılmış Trade Bansız Hesap", "Mail Değişen", "200₺", "Trade bansız Steam hesabı"],
+          ["5$ Yatırılmış Trade Bansız Hesap", "TR + Mail Değişen", "250₺", "TR ve trade bansız Steam hesabı"],
+          ["+10 Oyunlu Steam Hesabı", "Mail Değişen", "100₺", "10+ oyunlu hesap"],
+          ["+20 Oyunlu Steam Hesabı", "Mail Değişen", "150₺", "20+ oyunlu hesap"],
+          ["+50 Oyunlu Steam Hesabı", "Oyunlu Hesap", "200₺", "50+ oyunlu hesap"],
+          ["2010 Kurulumlu Steam Hesabı", "Mail Değişen", "100₺", "2010 kurulumlu hesap"],
+          ["2009 Kurulumlu Steam Hesabı", "Mail Değişen", "150₺", "2009 kurulumlu hesap"],
+          ["2008 Kurulumlu Steam Hesabı", "Mail Değişen", "170₺", "2008 kurulumlu hesap"],
+          ["2007 Kurulumlu Steam Hesabı", "Mail Değişen", "200₺", "2007 kurulumlu hesap"],
+          ["2006 Kurulumlu Steam Hesabı", "Mail Değişen", "220₺", "2006 kurulumlu hesap"],
+          ["2005 Kurulumlu Steam Hesabı", "Mail Değişen", "350₺", "2005 kurulumlu hesap"],
+          ["2004 Kurulumlu Steam Hesabı", "Mail Değişen", "450₺", "2004 kurulumlu hesap"],
+          ["2003 Kurulumlu Steam Hesabı", "Mail Değişen", "700₺", "2003 kurulumlu hesap"],
+          ["İstediğiniz Oyunlu Steam Hesabı", "Online + Mail Değişen", "?₺", "Fiyat için Instagram üzerinden iletişime geçiniz"]
+        ]
+      },
+      {
         id: "capcut",
         title: "CapCut",
         mark: "CC",
@@ -2002,6 +1927,59 @@
           ["Minecraft Hesap", "3 Aylık", "200₺", "Microsoft ile giriş"],
           ["Minecraft Hesap", "12 Aylık", "300₺", "Microsoft ile giriş"],
           ["Optifine.net Pelerinli Hesap", "Pelerinli Hesap", "80₺", "Optifine.net hesabı"]
+        ]
+      },
+      {
+        id: "xbox",
+        title: "Xbox",
+        mark: "XB",
+        logo: logos.xbox,
+        desc: "Gamepass Ultimate paketleri",
+        colors: ["#107c10", "#043b10"],
+        notice: "Her 1 adet alım için 1 giriş hakkı verilir.",
+        products: [
+          ["Gamepass Ultimate", "1 Aylık", "100₺", "Xbox Gamepass Ultimate"],
+          ["Gamepass Ultimate", "3 Aylık", "150₺", "Xbox Gamepass Ultimate"],
+          ["Gamepass Ultimate", "6 Aylık", "200₺", "Xbox Gamepass Ultimate"],
+          ["Gamepass Ultimate", "12 Aylık", "250₺", "Xbox Gamepass Ultimate"]
+        ]
+      },
+      {
+        id: "windows",
+        title: "Windows Key",
+        mark: "WK",
+        logo: logos.windows,
+        desc: "Windows 10 / 11 Pro lisans anahtarı",
+        colors: ["#0078d4", "#0f172a"],
+        products: [
+          ["Windows 10 / 11 Pro Key", "Windows Key", "150₺", "Dijital lisans anahtarı"]
+        ]
+      },
+      {
+        id: "duolingo",
+        title: "Duolingo",
+        mark: "DL",
+        logo: logos.duolingo,
+        desc: "Duolingo öğretmenlik ve öğrenci paketleri",
+        colors: ["#58cc02", "#1f7a0f"],
+        products: [
+          ["Duolingo Kendi Hesabına Öğretmenlik", "Öğretmenlik", "250₺", "50 öğrenci davet edebilirsiniz"],
+          ["Duolingo Öğrenci", "Öğrenci", "100₺", "Öğrenci paketi"]
+        ]
+      },
+      {
+        id: "brawl-stars",
+        title: "Brawl Stars",
+        mark: "BS",
+        logo: logos.brawlStars,
+        desc: "Skin garantili Brawl Stars hesapları",
+        colors: ["#f9b208", "#d92323"],
+        notice: "Hesaplardan elmas çıkma şansı vardır, kupalar random hesaplardır. Hesapların isim değiştirme hakları ücretsizdir.",
+        products: [
+          ["Yıldız Shelly Garantili Hesap", "Garantili Hesap", "350₺", "Brawl Stars hesap"],
+          ["3 Efsanevi Skin Garantili Hesap", "3 Efsanevi Skin", "250₺", "Skin garantili hesap"],
+          ["3 Efsanevi + 1 Hiperşarj Skin Garantili Hesap", "3 Efsanevi + 1 Hiperşarj", "320₺", "Skin garantili hesap"],
+          ["3 Efsanevi + 2 Hiperşarj Skin Garantili Hesap", "3 Efsanevi + 2 Hiperşarj", "450₺", "Skin garantili hesap"]
         ]
       },
       {
